@@ -1,0 +1,139 @@
+import { TibiaItem } from '../../models';
+
+export type RankedFactTone = 'primary' | 'secondary' | 'meta' | 'bonus' | 'protection';
+
+export interface RankedItemFact {
+  key: string;
+  labelKey: string | null;
+  label: string | null;
+  value: string;
+  icon: string;
+  tone: RankedFactTone;
+}
+
+export interface RankedItemCardModel {
+  primary: RankedItemFact[];
+  secondary: RankedItemFact[];
+  meta: RankedItemFact[];
+  bonuses: RankedItemFact[];
+  protections: RankedItemFact[];
+}
+
+export function buildRankedItemCardModel(item: TibiaItem): RankedItemCardModel {
+  const primary: RankedItemFact[] = [];
+  const secondary: RankedItemFact[] = [];
+
+  if (item.kind === 'armor') {
+    pushNumber(primary, 'armor', 'itemCard.armor', item.armor.arm, 'security', 'primary');
+    pushNumber(primary, 'defense', 'itemCard.defense', item.armor.def, 'shield', 'primary');
+
+    if (primary.length === 0) {
+      primary.push(rawFact('slot', null, item.armor.slot, 'checkroom', 'primary'));
+    } else {
+      secondary.push(rawFact('slot', null, item.armor.slot, 'checkroom', 'secondary'));
+    }
+  }
+
+  if (item.kind === 'weapon') {
+    pushNumber(primary, 'attack', 'itemCard.attack', item.weapon.attack, 'swords', 'primary');
+    pushNumber(primary, 'defense', 'itemCard.defense', item.weapon.defense, 'shield', 'primary');
+    pushNumber(primary, 'range', 'itemCard.range', item.weapon.range, 'track_changes', 'primary');
+
+    secondary.push(rawFact('weaponGroup', null, item.weapon.group, 'category', 'secondary'));
+    secondary.push(rawFact('hands', null, item.weapon.hands, 'pan_tool_alt', 'secondary'));
+    secondary.push(rawFact('damageType', null, item.weapon.damageType, 'bolt', 'secondary'));
+
+    if (item.weapon.requiredAmmoType) {
+      secondary.push(rawFact('requiredAmmoType', null, item.weapon.requiredAmmoType, 'adjust', 'secondary'));
+    }
+  }
+
+  if (item.kind === 'quiver') {
+    primary.push(numberFact('slots', 'itemCard.slots', item.quiver.volume, 'inventory_2', 'primary'));
+
+    if (item.quiver.acceptedAmmoTypes.length > 0) {
+      primary.push(rawFact('ammoTypes', null, item.quiver.acceptedAmmoTypes.join('/'), 'adjust', 'primary'));
+    }
+  }
+
+  if (item.kind === 'extra-slot') {
+    primary.push(rawFact('subtype', null, item.extraSlot.subtype, 'radio_button_checked', 'primary'));
+    pushNumber(primary, 'attack', 'itemCard.attack', item.extraSlot.attack ?? null, 'swords', 'primary');
+  }
+
+  return {
+    primary,
+    secondary,
+    meta: buildMetaFacts(item),
+    bonuses: buildBonusFacts(item),
+    protections: buildProtectionFacts(item)
+  };
+}
+
+function buildMetaFacts(item: TibiaItem): RankedItemFact[] {
+  const facts: RankedItemFact[] = [
+    rawFact('level', 'itemCard.level', item.level === null ? 'itemCard.unrestricted' : String(item.level), 'military_tech', 'meta'),
+    rawFact('weight', 'itemCard.weight', `${item.weight} oz`, 'scale', 'meta'),
+    numberFact('imbuementSlots', 'itemCard.imbuementSlots', item.imbuementSlots, 'auto_fix_high', 'meta')
+  ];
+
+  pushNumber(facts, 'classification', 'itemCard.classification', item.classification, 'workspace_premium', 'meta');
+  pushNumber(facts, 'maxTier', 'itemCard.maxTier', item.maxTier, 'upgrade', 'meta');
+
+  return facts;
+}
+
+function buildBonusFacts(item: TibiaItem): RankedItemFact[] {
+  return sortedEntries(item.bonuses).map(([key, value]) => rawFact(key, null, `+${value} ${key}`, bonusIcon(key), 'bonus'));
+}
+
+function buildProtectionFacts(item: TibiaItem): RankedItemFact[] {
+  return sortedEntries(item.protections).map(([key, value]) => rawFact(key, null, `${key} ${value}%`, 'health_and_safety', 'protection'));
+}
+
+function sortedEntries(record: Partial<Record<string, number>>): Array<[string, number]> {
+  return Object.entries(record)
+    .filter((entry): entry is [string, number] => entry[1] !== undefined)
+    .sort(([leftKey, leftValue], [rightKey, rightValue]) => rightValue - leftValue || leftKey.localeCompare(rightKey));
+}
+
+function pushNumber(
+  facts: RankedItemFact[],
+  key: string,
+  labelKey: string,
+  value: number | null,
+  icon: string,
+  tone: RankedFactTone
+): void {
+  if (value !== null) {
+    facts.push(numberFact(key, labelKey, value, icon, tone));
+  }
+}
+
+function numberFact(key: string, labelKey: string, value: number, icon: string, tone: RankedFactTone): RankedItemFact {
+  return rawFact(key, labelKey, String(value), icon, tone);
+}
+
+function rawFact(
+  key: string,
+  labelKey: string | null,
+  value: string,
+  icon: string,
+  tone: RankedFactTone
+): RankedItemFact {
+  return { key, labelKey, label: labelKey === null ? key : null, value, icon, tone };
+}
+
+function bonusIcon(key: string): string {
+  const icons: Record<string, string> = {
+    Sword: 'swords',
+    Axe: 'hardware',
+    Club: 'sports_martial_arts',
+    Distance: 'my_location',
+    Shielding: 'shield',
+    MagicLevel: 'auto_awesome',
+    Fist: 'front_hand'
+  };
+
+  return icons[key] ?? 'add_circle';
+}
