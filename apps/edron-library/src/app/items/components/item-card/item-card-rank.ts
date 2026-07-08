@@ -36,6 +36,7 @@ export function buildRankedItemCardModel(item: TibiaItem): RankedItemCardModel {
 
   if (item.kind === 'weapon') {
     pushNumber(primary, 'attack', 'itemCard.attack', item.weapon.attack, 'swords', 'primary');
+    primary.push(...buildElementDamageFacts(item.weapon.elementDamage));
     pushNumber(primary, 'defense', 'itemCard.defense', item.weapon.defense, 'shield', 'primary');
     pushNumber(primary, 'range', 'itemCard.range', item.weapon.range, 'track_changes', 'primary');
 
@@ -91,6 +92,17 @@ function buildProtectionFacts(item: TibiaItem): RankedItemFact[] {
   return sortedEntries(item.protections).map(([key, value]) => rawFact(key, null, `${key} ${value}%`, 'health_and_safety', 'protection'));
 }
 
+function buildElementDamageFacts(elementDamage: Partial<Record<string, number>> | undefined): RankedItemFact[] {
+  if (!elementDamage) {
+    return [];
+  }
+
+  return sortedEntries(elementDamage).map(([key, value]) => ({
+    ...rawFact(`elementDamage.${key}`, null, String(value), elementIcon(key), 'primary'),
+    label: key
+  }));
+}
+
 function sortedEntries(record: Partial<Record<string, number>>): Array<[string, number]> {
   return Object.entries(record)
     .filter((entry): entry is [string, number] => entry[1] !== undefined)
@@ -136,4 +148,18 @@ function bonusIcon(key: string): string {
   };
 
   return icons[key] ?? 'add_circle';
+}
+
+function elementIcon(key: string): string {
+  const icons: Record<string, string> = {
+    Physical: 'swords',
+    Fire: 'local_fire_department',
+    Earth: 'terrain',
+    Energy: 'electric_bolt',
+    Ice: 'ac_unit',
+    Holy: 'wb_sunny',
+    Death: 'skull',
+  };
+
+  return icons[key] ?? 'bolt';
 }
