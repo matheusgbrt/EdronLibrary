@@ -227,7 +227,7 @@ function elementIcon(key: string): string {
     Energy: 'electric_bolt',
     Ice: 'ac_unit',
     Holy: 'wb_sunny',
-    Death: 'skull',
+    Death: 'dangerous',
   };
 
   return icons[key] ?? 'bolt';

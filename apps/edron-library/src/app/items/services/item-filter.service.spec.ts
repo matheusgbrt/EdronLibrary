@@ -22,7 +22,8 @@ const baseItem = {
 
 function weaponItem(
   name: string,
-  elementDamage: NonNullable<TibiaItem & { kind: 'weapon' }>['weapon']['elementDamage']
+  elementDamage: NonNullable<TibiaItem & { kind: 'weapon' }>['weapon']['elementDamage'],
+  damageRange?: NonNullable<TibiaItem & { kind: 'weapon' }>['weapon']['damageRange']
 ): TibiaItem {
   return {
     ...baseItem,
@@ -39,6 +40,7 @@ function weaponItem(
       hitPercent: null,
       damageType: 'Earth',
       elementDamage,
+      damageRange,
       consumesAmmo: false
     }
   };
@@ -60,5 +62,23 @@ describe('ItemFilterService', () => {
     );
 
     expect(result.map((item) => item.name)).toEqual(['Amber Greataxe']);
+  });
+
+  it('filters weapons by damage range average', () => {
+    const service = new ItemFilterService();
+    const result = service.applyFilters(
+      [
+        weaponItem('Underworld Rod', undefined, { average: 65, min: 56, max: 74, raw: '56-74' }),
+        weaponItem('Wand of Dragonbreath', undefined, { average: 19, min: 13, max: 25, raw: '19 (13-25)' }),
+        weaponItem('Plain Wand', undefined)
+      ],
+      {
+        ...DEFAULT_ITEM_FILTERS,
+        minDamageRangeAverage: 50,
+        maxDamageRangeAverage: 80
+      }
+    );
+
+    expect(result.map((item) => item.name)).toEqual(['Underworld Rod']);
   });
 });

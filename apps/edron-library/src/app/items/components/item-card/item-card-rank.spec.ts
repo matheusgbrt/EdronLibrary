@@ -149,6 +149,36 @@ describe('buildRankedItemCardModel', () => {
     ]);
   });
 
+  it('uses a supported material icon for death damage range', () => {
+    const item = {
+      ...baseItem,
+      kind: 'weapon',
+      weapon: {
+        group: 'Rod',
+        hands: 'OneHanded',
+        attack: null,
+        defense: null,
+        defenseModifier: null,
+        range: 3,
+        hitPercent: null,
+        damageType: 'Death',
+        damageRange: {
+          average: 65,
+          min: 56,
+          max: 74,
+          raw: '56-74'
+        },
+        consumesAmmo: false
+      }
+    } satisfies TibiaItem;
+
+    const model = buildRankedItemCardModel(item);
+
+    expect(model.primary[0]).toEqual(
+      expect.objectContaining({ key: 'damageRange', label: 'Damage', value: '56-74', icon: 'dangerous' })
+    );
+  });
+
   it('prioritizes quiver volume and ammo types', () => {
     const item = {
       ...baseItem,

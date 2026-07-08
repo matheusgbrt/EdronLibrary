@@ -11,6 +11,7 @@ export type BaseItemSortKey =
   | 'maxTier'
   | 'armor'
   | 'attack'
+  | 'damageRange'
   | 'range'
   | 'hitPercent';
 
@@ -46,7 +47,8 @@ export const ITEM_SORT_OPTIONS: ItemSortOption[] = [
   { group: 'General', label: 'Max tier', key: 'maxTier', defaultDirection: 'desc' },
   { group: 'Combat', label: 'Attack', key: 'attack', defaultDirection: 'desc' },
   { group: 'Combat', label: 'Armor', key: 'armor', defaultDirection: 'desc' },
-  { group: 'Combat', label: 'Range', key: 'range', defaultDirection: 'desc' },
+  { group: 'Combat', label: 'Damage range', key: 'damageRange', defaultDirection: 'desc' },
+  { group: 'Combat', label: 'Attack range', key: 'range', defaultDirection: 'desc' },
   { group: 'Combat', label: 'Hit %', key: 'hitPercent', defaultDirection: 'desc' },
   { group: 'Elemental damage', label: 'Fire damage', key: 'elementDamage.Fire', defaultDirection: 'desc' },
   { group: 'Elemental damage', label: 'Earth damage', key: 'elementDamage.Earth', defaultDirection: 'desc' },
@@ -150,6 +152,8 @@ export class ItemSortService {
         return item.kind === 'weapon' ? item.weapon.defense : null;
       case 'attack':
         return item.kind === 'weapon' ? item.weapon.attack : null;
+      case 'damageRange':
+        return item.kind === 'weapon' ? item.weapon.damageRange?.average ?? null : null;
       case 'range':
         return item.kind === 'weapon' ? item.weapon.range : null;
       case 'hitPercent':

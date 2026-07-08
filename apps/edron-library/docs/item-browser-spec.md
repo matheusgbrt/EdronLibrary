@@ -135,7 +135,7 @@ Shared item facts include:
 Kind-specific item facts include:
 
 - Armor slot, armor value, shield defense fallback, and two-handed flag.
-- Weapon group, hands, attack, armor/defense value, range, hit percent, damage type, elemental damage, ammo requirements, and charges.
+- Weapon group, hands, attack, armor/defense value, attack range, hit percent, damage type, elemental damage, damage range estimate, ammo requirements, and charges.
 - Quiver volume and accepted ammo types.
 - Extra-slot subtype, light, and consumable flags.
 
@@ -210,6 +210,7 @@ Implemented filter sections:
 - Extra slot type.
 - Skill bonuses.
 - Elemental damage.
+- Damage range.
 - Protections.
 - Imbuements and class.
 - Weight.
@@ -226,6 +227,7 @@ Numeric threshold controls:
 - Skill bonus values mean minimum required bonus.
 - Protection values mean minimum required percentage.
 - Elemental damage values mean minimum required weapon elemental damage.
+- Damage range values mean minimum/maximum average damage from `weapon.damageRange.average`.
 - Imbuement slots and max tier mean minimum values.
 - Classification is an exact match.
 - Empty numeric controls mean unrestricted.
@@ -252,6 +254,8 @@ export interface ItemFilters {
   maxLevel: number | null;
   minWeight: number | null;
   maxWeight: number | null;
+  minDamageRangeAverage: number | null;
+  maxDamageRangeAverage: number | null;
   minImbuementSlots: number | null;
   classification: number | null;
   minMaxTier: number | null;
@@ -272,6 +276,7 @@ Filtering rules:
 - Skill bonus thresholds read `item.bonuses`.
 - Protection thresholds read `item.protections`.
 - Elemental damage thresholds only match weapon items and read `item.weapon.elementDamage`.
+- Damage range thresholds only match weapon items and read `item.weapon.damageRange.average`.
 - Drop filters match source names case-insensitively.
 
 ## Sort Drawer
@@ -322,7 +327,7 @@ Primary file:
 Sort keys:
 
 - General: name, level, weight, imbuement slots, classification, max tier.
-- Combat: attack, armor, range, hit percent.
+- Combat: attack, armor, damage range, attack range, hit percent.
 - Elemental damage: Fire, Earth, Energy, Ice, Holy, Death.
 - Skill bonuses: Sword, Axe, Club, Distance, Shielding, MagicLevel, Fist.
 - Protections: Physical, Fire, Earth, Energy, Ice, Holy, Death.
@@ -336,7 +341,7 @@ Sorting rules:
 - Missing numeric values always sink to the bottom, regardless of direction.
 - Armor sort uses armor value for armor items, with shield defense as the armor fallback.
 - Weapon armor sort reads `weapon.defense`.
-- Weapon attack, range, and hit percent only apply to weapon items.
+- Weapon attack, damage range, attack range, and hit percent only apply to weapon items.
 - Elemental damage sort only applies to weapon items.
 - Skill bonus and protection sorts apply to all item kinds.
 

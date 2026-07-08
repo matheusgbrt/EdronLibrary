@@ -69,6 +69,34 @@ describe('ItemSortService', () => {
 
     expect(sorted.map((item) => item.name)).toEqual(['Better Fire', 'Magic and Fire', 'No Magic']);
   });
+
+  it('sorts weapon damage ranges by average value', () => {
+    const service = new ItemSortService();
+    const underworldRod = weaponItem('Underworld Rod', {
+      attack: null,
+      damageType: 'Death',
+      damageRange: { average: 65, min: 56, max: 74, raw: '56-74' },
+      level: 42
+    });
+    const wandOfDragonbreath = weaponItem('Wand of Dragonbreath', {
+      attack: null,
+      damageType: 'Fire',
+      damageRange: { average: 19, min: 13, max: 25, raw: '19 (13-25)' },
+      level: 13
+    });
+    const noDamageRange = weaponItem('Plain Wand', {
+      attack: null,
+      damageType: 'Energy',
+      level: 1
+    });
+
+    const sorted = service.sortItems([wandOfDragonbreath, noDamageRange, underworldRod], {
+      key: 'damageRange',
+      direction: 'desc'
+    });
+
+    expect(sorted.map((item) => item.name)).toEqual(['Underworld Rod', 'Wand of Dragonbreath', 'Plain Wand']);
+  });
 });
 
 function armorItem(
@@ -94,6 +122,8 @@ function weaponItem(
   options: {
     attack: number | null;
     elementDamage?: NonNullable<TibiaItem & { kind: 'weapon' }>['weapon']['elementDamage'];
+    damageRange?: NonNullable<TibiaItem & { kind: 'weapon' }>['weapon']['damageRange'];
+    damageType?: NonNullable<TibiaItem & { kind: 'weapon' }>['weapon']['damageType'];
     level: number | null;
   }
 ): TibiaItem {
@@ -111,8 +141,9 @@ function weaponItem(
       defenseModifier: null,
       range: null,
       hitPercent: null,
-      damageType: 'Earth',
+      damageType: options.damageType ?? 'Earth',
       elementDamage: options.elementDamage,
+      damageRange: options.damageRange,
       consumesAmmo: false
     }
   };

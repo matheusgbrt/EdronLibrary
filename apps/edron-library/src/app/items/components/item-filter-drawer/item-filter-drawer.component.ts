@@ -99,6 +99,13 @@ export class ItemFilterDrawerComponent {
     this.state.patchFilters({ minWeight: range.min, maxWeight: range.max });
   }
 
+  patchDamageRangeAverage(range: { min: number | null; max: number | null }): void {
+    this.state.patchFilters({
+      minDamageRangeAverage: range.min,
+      maxDamageRangeAverage: range.max
+    });
+  }
+
   patchNumberFilter(key: 'minImbuementSlots' | 'classification' | 'minMaxTier', value: unknown): void {
     this.state.patchFilters({ [key]: this.parseValue(value) });
   }

@@ -22,6 +22,8 @@ export interface ItemFilters {
   maxLevel: number | null;
   minWeight: number | null;
   maxWeight: number | null;
+  minDamageRangeAverage: number | null;
+  maxDamageRangeAverage: number | null;
   minImbuementSlots: number | null;
   classification: number | null;
   minMaxTier: number | null;
@@ -42,6 +44,8 @@ export const DEFAULT_ITEM_FILTERS: ItemFilters = {
   maxLevel: null,
   minWeight: null,
   maxWeight: null,
+  minDamageRangeAverage: null,
+  maxDamageRangeAverage: null,
   minImbuementSlots: null,
   classification: null,
   minMaxTier: null,
@@ -65,6 +69,7 @@ export class ItemFilterService {
       this.matchesVocations(item, filters.vocations) &&
       this.matchesRange(this.levelValue(item), filters.minLevel, filters.maxLevel) &&
       this.matchesRange(item.weight, filters.minWeight, filters.maxWeight) &&
+      this.matchesDamageRangeAverage(item, filters.minDamageRangeAverage, filters.maxDamageRangeAverage) &&
       this.matchesMinimum(item.imbuementSlots, filters.minImbuementSlots) &&
       this.matchesExact(item.classification, filters.classification) &&
       this.matchesMinimum(item.maxTier, filters.minMaxTier) &&
@@ -175,6 +180,22 @@ export class ItemFilterService {
     }
 
     return this.matchesThresholds(item.weapon.elementDamage ?? {}, thresholds);
+  }
+
+  private matchesDamageRangeAverage(
+    item: TibiaItem,
+    min: number | null,
+    max: number | null
+  ): boolean {
+    if (min === null && max === null) {
+      return true;
+    }
+
+    if (item.kind !== 'weapon' || item.weapon.damageRange === undefined) {
+      return false;
+    }
+
+    return this.matchesRange(item.weapon.damageRange.average, min, max);
   }
 
   private matchesDrops(item: TibiaItem, dropsFrom: string[]): boolean {
