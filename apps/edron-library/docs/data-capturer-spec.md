@@ -179,6 +179,8 @@ Weapon rules:
 - Ranged `atk_mod` values for bows, crossbows, and throwing weapons are attack modifiers and normalize into `weapon.attack`.
 - Ranged `hit_mod` values normalize into `weapon.hitPercent`.
 - Elemental attack fields normalize into `weapon.elementDamage`.
+- Explicit wand/rod-style `damagetype` values normalize into `weapon.damageType` when no elemental attack field is present.
+- Explicit `damagerange` estimates such as `19 (13-25)` normalize into `weapon.damageRange` with `average`, `min`, `max`, and `raw`.
 - Elemental damage must not be emitted as a skill bonus.
 - Weapon defense-like values normalize into `weapon.defense`; the frontend may display that value as Armor.
 

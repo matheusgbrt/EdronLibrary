@@ -77568,7 +77568,7 @@
         "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -77633,7 +77633,13 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
+        "damageRange": {
+          "average": 97,
+          "min": 94,
+          "max": 100,
+          "raw": "97 (94-100)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -77698,6 +77704,12 @@
         "range": 7,
         "hitPercent": null,
         "damageType": "Physical",
+        "damageRange": {
+          "average": 110,
+          "min": 85,
+          "max": 135,
+          "raw": "110 (85-135)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -77761,7 +77773,7 @@
         "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Death",
         "consumesAmmo": false,
         "charges": null
       }
@@ -77826,7 +77838,13 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Fire",
+        "damageRange": {
+          "average": 95,
+          "min": 85,
+          "max": 105,
+          "raw": "95 (85-105)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -77892,7 +77910,7 @@
         "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -77952,7 +77970,7 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -78012,7 +78030,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -78078,7 +78096,7 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Fire",
         "consumesAmmo": false,
         "charges": null
       }
@@ -78142,7 +78160,7 @@
         "defenseModifier": null,
         "range": null,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Fire",
         "consumesAmmo": false,
         "charges": null
       }
@@ -78207,7 +78225,13 @@
         "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Death",
+        "damageRange": {
+          "average": 107,
+          "min": 98,
+          "max": 116,
+          "raw": "107 (98-116)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -78272,7 +78296,7 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Earth",
         "consumesAmmo": false,
         "charges": null
       }
@@ -78336,7 +78360,7 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -78399,7 +78423,7 @@
         "defenseModifier": null,
         "range": null,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Death",
         "consumesAmmo": false,
         "charges": null
       }
@@ -78464,7 +78488,7 @@
         "defenseModifier": null,
         "range": null,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -78524,7 +78548,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -78584,7 +78608,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -78644,7 +78668,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -78704,7 +78728,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -78764,7 +78788,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -78824,7 +78848,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -78888,7 +78912,7 @@
         "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Death",
         "consumesAmmo": false,
         "charges": null
       }
@@ -78951,7 +78975,7 @@
         "defenseModifier": null,
         "range": null,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Fire",
         "consumesAmmo": false,
         "charges": null
       }
@@ -79010,7 +79034,7 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -79074,7 +79098,7 @@
         "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Death",
         "consumesAmmo": false,
         "charges": null
       }
@@ -79135,7 +79159,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -79258,7 +79282,7 @@
         "defenseModifier": null,
         "range": 6,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Death",
         "consumesAmmo": false,
         "charges": null
       }
@@ -79322,7 +79346,7 @@
         "defenseModifier": null,
         "range": null,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Death",
         "consumesAmmo": false,
         "charges": null
       }
@@ -79381,7 +79405,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Fire",
         "consumesAmmo": false,
         "charges": null
       }
@@ -79441,7 +79465,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -79501,7 +79525,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -79561,7 +79585,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -79621,7 +79645,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -79682,7 +79706,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -79744,7 +79768,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -79807,7 +79831,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -79906,7 +79930,13 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
+        "damageRange": {
+          "average": 45,
+          "min": 37,
+          "max": 53,
+          "raw": "45 (37-53)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -79968,7 +79998,7 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Death",
         "consumesAmmo": false,
         "charges": 250
       }
@@ -80042,7 +80072,13 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Death",
+        "damageRange": {
+          "average": 30,
+          "min": 23,
+          "max": 37,
+          "raw": "30 (23-37)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -80123,7 +80159,7 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -80183,7 +80219,13 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
+        "damageRange": {
+          "average": 95,
+          "min": 80,
+          "max": 110,
+          "raw": "95 (80-110)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -80306,7 +80348,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -80379,7 +80421,13 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Fire",
+        "damageRange": {
+          "average": 30,
+          "min": 23,
+          "max": 37,
+          "raw": "30 (23-37)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -80447,7 +80495,13 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Fire",
+        "damageRange": {
+          "average": 19,
+          "min": 13,
+          "max": 25,
+          "raw": "19 (13-25)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -80520,7 +80574,13 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Fire",
+        "damageRange": {
+          "average": 85,
+          "min": 75,
+          "max": 95,
+          "raw": "85 (75-95)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -80621,7 +80681,13 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Fire",
+        "damageRange": {
+          "average": 65,
+          "min": 56,
+          "max": 74,
+          "raw": "65 (56-74)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -80681,7 +80747,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -80742,7 +80808,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -80804,7 +80870,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -80867,7 +80933,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -80927,7 +80993,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -80988,7 +81054,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -81050,7 +81116,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -81113,7 +81179,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
         "consumesAmmo": false,
         "charges": null
       }
@@ -81208,7 +81274,13 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
+        "damageRange": {
+          "average": 65,
+          "min": 56,
+          "max": 74,
+          "raw": "65 (56-74)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -81296,7 +81368,13 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Death",
+        "damageRange": {
+          "average": 65,
+          "min": 56,
+          "max": 74,
+          "raw": "65 (56-74)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -81360,7 +81438,13 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
+        "damageRange": {
+          "average": 13,
+          "min": 8,
+          "max": 18,
+          "raw": "13 (8-18)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -81423,7 +81507,7 @@
         "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -81488,7 +81572,7 @@
         "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Earth",
         "consumesAmmo": false,
         "charges": null
       }
@@ -81553,6 +81637,12 @@
         "range": null,
         "hitPercent": null,
         "damageType": "Physical",
+        "damageRange": {
+          "average": 110,
+          "min": 85,
+          "max": 135,
+          "raw": "110 (85-135)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -81619,7 +81709,13 @@
         "defenseModifier": null,
         "range": 6,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
+        "damageRange": {
+          "average": 92,
+          "min": 86,
+          "max": 98,
+          "raw": "92 (86-98)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -81685,7 +81781,13 @@
         "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
+        "damageRange": {
+          "average": 100,
+          "min": 80,
+          "max": 120,
+          "raw": "100 (80-120)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -81749,7 +81851,7 @@
         "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Earth",
         "consumesAmmo": false,
         "charges": null
       }
@@ -81817,7 +81919,13 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Energy",
+        "damageRange": {
+          "average": 70,
+          "min": 63,
+          "max": 77,
+          "raw": "70 (63-77)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -81882,7 +81990,7 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -81948,7 +82056,13 @@
         "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Fire",
+        "damageRange": {
+          "average": 98,
+          "min": 88,
+          "max": 108,
+          "raw": "98 (88-108)"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -82014,7 +82128,7 @@
         "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Earth",
         "consumesAmmo": false,
         "charges": null
       }
@@ -82080,7 +82194,7 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -82157,7 +82271,7 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -82222,7 +82336,7 @@
         "defenseModifier": null,
         "range": null,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Earth",
         "consumesAmmo": false,
         "charges": null
       }
@@ -82311,7 +82425,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -82376,7 +82490,7 @@
         "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Earth",
         "consumesAmmo": false,
         "charges": null
       }
@@ -82439,7 +82553,7 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -82503,7 +82617,7 @@
         "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -82582,7 +82696,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -82645,7 +82759,7 @@
         "defenseModifier": null,
         "range": null,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -82717,7 +82831,7 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Earth",
         "consumesAmmo": false,
         "charges": null
       }
@@ -82782,7 +82896,7 @@
         "defenseModifier": null,
         "range": null,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -82870,7 +82984,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Death",
         "consumesAmmo": false,
         "charges": null
       }
@@ -82945,7 +83059,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83007,7 +83121,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Earth",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83067,7 +83181,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83127,7 +83241,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83187,7 +83301,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83247,7 +83361,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83307,7 +83421,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83367,7 +83481,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83431,7 +83545,7 @@
         "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Earth",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83491,7 +83605,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83552,7 +83666,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83614,7 +83728,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83677,7 +83791,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83737,7 +83851,7 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83797,7 +83911,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83858,7 +83972,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83920,7 +84034,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -83983,7 +84097,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -84043,7 +84157,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -84104,7 +84218,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -84166,7 +84280,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -84229,7 +84343,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -84292,7 +84406,7 @@
         "defenseModifier": null,
         "range": null,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Earth",
         "consumesAmmo": false,
         "charges": null
       }
@@ -84351,7 +84465,7 @@
         "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -84415,7 +84529,7 @@
         "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Earth",
         "consumesAmmo": false,
         "charges": null
       }
@@ -84490,7 +84604,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Earth",
         "consumesAmmo": false,
         "charges": null
       }
@@ -84552,7 +84666,7 @@
         "defenseModifier": null,
         "range": 6,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -84651,7 +84765,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Earth",
         "consumesAmmo": false,
         "charges": null
       }
@@ -84715,7 +84829,7 @@
         "defenseModifier": null,
         "range": null,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -84809,7 +84923,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Earth",
         "consumesAmmo": false,
         "charges": null
       }
@@ -84868,7 +84982,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -84968,7 +85082,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Death",
         "consumesAmmo": false,
         "charges": null
       }
@@ -85028,7 +85142,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -85088,7 +85202,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }
@@ -85148,7 +85262,7 @@
         "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
-        "damageType": "Physical",
+        "damageType": "Ice",
         "consumesAmmo": false,
         "charges": null
       }

@@ -49,3 +49,41 @@ test('normalizeWeaponItem treats ranged atk_mod as attack and keeps hit percent'
   assert.equal(item.weapon.hitPercent, 6);
   assert.equal(item.weapon.range, 6);
 });
+
+test('normalizeWeaponItem keeps wand damage type and damage range estimate', () => {
+  const category: CaptureCategory = {
+    key: 'wands',
+    kind: 'weapon',
+    weaponGroup: 'Wand',
+    wikiCategoryTitles: ['Category:Wands'],
+  };
+
+  const item = normalizeWeaponItem(
+    {
+      ...rawWeapon({
+        levelrequired: '13',
+        vocrequired: 'sorcerers',
+        weight: '21.00',
+        imbueslots: '2',
+        upgradeclass: '1',
+        range: '4',
+        manacost: '+3 mana per attack',
+        damagetype: 'Fire',
+        damagerange: '19 (13-25)',
+      }),
+      title: 'Wand of Dragonbreath',
+      sourceUrl: 'https://tibia.fandom.com/wiki/Wand_of_Dragonbreath',
+      revisionId: 1190963,
+    },
+    category,
+    importedAt,
+  );
+
+  assert.equal(item.weapon.damageType, 'Fire');
+  assert.deepEqual(item.weapon.damageRange, {
+    average: 19,
+    min: 13,
+    max: 25,
+    raw: '19 (13-25)',
+  });
+});

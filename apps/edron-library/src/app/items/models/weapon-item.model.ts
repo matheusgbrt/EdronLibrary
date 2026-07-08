@@ -18,6 +18,13 @@ export type WeaponHands =
   | 'OneHanded'
   | 'TwoHanded';
 
+export interface WeaponDamageRange {
+  average: number;
+  min: number;
+  max: number;
+  raw: string;
+}
+
 export interface WeaponStats {
   group: WeaponGroup;
   hands: WeaponHands;
@@ -31,6 +38,7 @@ export interface WeaponStats {
 
   damageType: DamageType;
   elementDamage?: Partial<Record<Element, number>>;
+  damageRange?: WeaponDamageRange;
 
   requiredAmmoType?: AmmoType | null;
   consumesAmmo: boolean;

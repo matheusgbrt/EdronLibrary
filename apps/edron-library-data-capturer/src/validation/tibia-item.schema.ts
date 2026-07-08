@@ -165,6 +165,12 @@ export const WeaponItemSchema = ItemBaseSchema.extend({
       'Mixed',
     ]),
     elementDamage: z.record(z.string(), z.number()).optional(),
+    damageRange: z.object({
+      average: z.number(),
+      min: z.number(),
+      max: z.number(),
+      raw: z.string(),
+    }).optional(),
     requiredAmmoType: z.enum(['Arrow', 'Bolt']).nullable().optional(),
     consumesAmmo: z.boolean(),
     charges: z.number().nullable().optional(),

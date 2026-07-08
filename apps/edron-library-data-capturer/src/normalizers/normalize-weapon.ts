@@ -38,6 +38,8 @@ const DEFENSE_MODIFIER_KEYS = ['defensemod', 'defense modifier', 'defense_mod', 
 const RANGE_KEYS = ['range'];
 const HIT_PERCENT_KEYS = ['hit_mod', 'hit percent', 'hitchance', 'hit chance'];
 const CHARGE_KEYS = ['charges'];
+const DAMAGE_TYPE_KEYS = ['damagetype', 'damage type'];
+const DAMAGE_RANGE_KEYS = ['damagerange', 'damage range'];
 const DAMAGE_FIELD_MAP = {
   Energy: ['energy_attack'],
   Fire: ['fire_attack'],
@@ -127,6 +129,42 @@ function parseHands(value: string | undefined): 'OneHanded' | 'TwoHanded' {
   return normalized.includes('two') ? 'TwoHanded' : 'OneHanded';
 }
 
+function parseDamageType(value: string | undefined): WeaponItem['weapon']['damageType'] | null {
+  const normalized = stripWikiMarkup(value ?? '').toLowerCase();
+  const damageTypes: WeaponItem['weapon']['damageType'][] = [
+    'Physical',
+    'Fire',
+    'Earth',
+    'Energy',
+    'Ice',
+    'Holy',
+    'Death',
+    'Healing',
+    'Mixed',
+  ];
+
+  return damageTypes.find((type) => normalized.includes(type.toLowerCase())) ?? null;
+}
+
+function parseDamageRange(value: string | undefined): WeaponItem['weapon']['damageRange'] | undefined {
+  const raw = stripWikiMarkup(value ?? '').trim();
+  if (!raw) {
+    return undefined;
+  }
+
+  const match = raw.match(/^(\d+(?:\.\d+)?)\s*\(\s*(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)\s*\)$/);
+  if (!match?.[1] || !match[2] || !match[3]) {
+    return undefined;
+  }
+
+  return {
+    average: Number.parseFloat(match[1]),
+    min: Number.parseFloat(match[2]),
+    max: Number.parseFloat(match[3]),
+    raw,
+  };
+}
+
 function inferWeaponDamageType(
   rawFields: Record<string, string>,
 ): {
@@ -149,6 +187,13 @@ function inferWeaponDamageType(
     return {
       damageType: firstElement,
       elementDamage,
+    };
+  }
+
+  const explicitDamageType = parseDamageType(getField(rawFields, DAMAGE_TYPE_KEYS));
+  if (explicitDamageType) {
+    return {
+      damageType: explicitDamageType,
     };
   }
 
@@ -213,6 +258,7 @@ export function normalizeWeaponItem(
   const imagePath =
     DOWNLOAD_IMAGES && imageExtension ? `/assets/images/items/${id}.${imageExtension}` : '';
   const damageInfo = inferWeaponDamageType(raw.rawFields);
+  const damageRange = parseDamageRange(getField(raw.rawFields, DAMAGE_RANGE_KEYS));
   const attack =
     parseInteger(getField(raw.rawFields, ATTACK_KEYS)) ??
     (isRangedAttackModifierGroup(group)
@@ -264,6 +310,7 @@ export function normalizeWeaponItem(
       hitPercent: parseNullableNumber(getField(raw.rawFields, HIT_PERCENT_KEYS)),
       damageType: damageInfo.damageType,
       ...(damageInfo.elementDamage ? { elementDamage: damageInfo.elementDamage } : {}),
+      ...(damageRange ? { damageRange } : {}),
       ...(inferRequiredAmmoType(group) !== undefined
         ? { requiredAmmoType: inferRequiredAmmoType(group) }
         : {}),
