@@ -1,6 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { ChangeDetectionStrategy, Component, OnInit, computed, inject, signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, computed, inject, signal } from '@angular/core';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
+import { ActivatedRoute } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { map } from 'rxjs';
 
@@ -10,6 +11,11 @@ import { ItemCategorySidebarComponent } from '../../components/item-category-sid
 import { ItemFilterDrawerComponent } from '../../components/item-filter-drawer/item-filter-drawer.component';
 import { ItemSortDrawerComponent } from '../../components/item-sort-drawer/item-sort-drawer.component';
 import { ItemBrowserStateService } from '../../services/item-browser-state.service';
+import {
+  ItemSeoRouteDefinition,
+  ItemSeoRouteService,
+  ROOT_SEO_ROUTE
+} from '../../services/item-seo-route.service';
 
 type UtilityDrawer = 'filter' | 'sort';
 
@@ -30,7 +36,10 @@ type UtilityDrawer = 'filter' | 'sort';
 })
 export class ItemBrowserPageComponent implements OnInit {
   private readonly breakpointObserver = inject(BreakpointObserver);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly route = inject(ActivatedRoute);
   private readonly state = inject(ItemBrowserStateService);
+  private readonly seoRouteService = inject(ItemSeoRouteService);
 
   protected readonly isSmallScreen = toSignal(
     this.breakpointObserver.observe('(max-width: 767px)').pipe(map((result) => result.matches)),
@@ -42,6 +51,11 @@ export class ItemBrowserPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.state.loadItems();
+    this.route.data
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((data) => {
+        this.applySeoRoute((data['seoRoute'] as ItemSeoRouteDefinition | undefined) ?? ROOT_SEO_ROUTE);
+      });
   }
 
   protected toggleCategory(): void {
@@ -57,5 +71,15 @@ export class ItemBrowserPageComponent implements OnInit {
   protected openUtilityDrawer(drawer: { open: () => void }, activeDrawer: UtilityDrawer): void {
     this.activeUtilityDrawer.set(activeDrawer);
     drawer.open();
+  }
+
+  private applySeoRoute(route: ItemSeoRouteDefinition): void {
+    this.state.resetFilters();
+
+    if (Object.keys(route.filters).length > 0) {
+      this.state.patchFilters(route.filters);
+    }
+
+    this.seoRouteService.apply(route);
   }
 }
