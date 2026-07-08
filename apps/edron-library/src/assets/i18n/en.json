@@ -62,8 +62,7 @@
     "levelDesc": "Level descending",
     "weightAsc": "Weight ascending",
     "attackDesc": "Highest attack",
-    "armorDesc": "Highest armor",
-    "defenseDesc": "Highest defense"
+    "armorDesc": "Highest armor"
   },
   "itemCard": {
     "level": "Level",
@@ -73,7 +72,6 @@
     "classification": "Classification",
     "maxTier": "Max tier",
     "armor": "Armor",
-    "defense": "Defense",
     "attack": "Attack",
     "range": "Range",
     "bonuses": "Bonuses",

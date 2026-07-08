@@ -10,7 +10,6 @@ const translations = {
     armor: 'Armor',
     bonuses: 'Bonuses',
     classification: 'Classification',
-    defense: 'Defense',
     imbuementSlots: 'Imbuement slots',
     level: 'Level',
     maxTier: 'Max tier',

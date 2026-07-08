@@ -48,7 +48,6 @@ export class ItemBrowserToolbarComponent {
     { labelKey: 'sort.levelDesc', key: 'level', direction: 'desc' },
     { labelKey: 'sort.weightAsc', key: 'weight', direction: 'asc' },
     { labelKey: 'sort.attackDesc', key: 'attack', direction: 'desc' },
-    { labelKey: 'sort.defenseDesc', key: 'defense', direction: 'desc' },
     { labelKey: 'sort.armorDesc', key: 'armor', direction: 'desc' }
   ];
 
