@@ -12,7 +12,7 @@ import {
 } from '../models';
 import { ItemDataService } from './item-data.service';
 import { DEFAULT_ITEM_FILTERS, ItemFilterService, ItemFilters } from './item-filter.service';
-import { ItemSort, ItemSortService } from './item-sort.service';
+import { DEFAULT_ITEM_SORTS, ItemSort, ItemSortService } from './item-sort.service';
 
 @Injectable({ providedIn: 'root' })
 export class ItemBrowserStateService {
@@ -22,7 +22,7 @@ export class ItemBrowserStateService {
 
   readonly allItems = signal<TibiaItem[]>([]);
   readonly filters = signal<ItemFilters>({ ...DEFAULT_ITEM_FILTERS });
-  readonly sort = signal<ItemSort>({ key: 'name', direction: 'asc' });
+  readonly sorts = signal<ItemSort[]>(DEFAULT_ITEM_SORTS.map((sort) => ({ ...sort })));
   readonly pageIndex = signal(0);
   readonly pageSize = signal(20);
   readonly loading = signal(false);
@@ -33,7 +33,7 @@ export class ItemBrowserStateService {
   );
 
   readonly sortedItems = computed(() =>
-    this.itemSortService.sortItems(this.filteredItems(), this.sort())
+    this.itemSortService.sortItems(this.filteredItems(), this.sorts())
   );
 
   readonly totalCount = computed(() => this.sortedItems().length);
@@ -98,7 +98,11 @@ export class ItemBrowserStateService {
   }
 
   setSort(sort: ItemSort): void {
-    this.sort.set(sort);
+    this.setSorts([sort]);
+  }
+
+  setSorts(sorts: ItemSort[]): void {
+    this.sorts.set(sorts.length > 0 ? sorts : DEFAULT_ITEM_SORTS.map((sort) => ({ ...sort })));
     this.pageIndex.set(0);
   }
 

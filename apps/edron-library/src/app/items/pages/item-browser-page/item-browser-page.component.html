@@ -10,18 +10,23 @@
   </mat-drawer>
 
   <mat-drawer
-    #filterDrawer
+    #utilityDrawer
     class="w-full border-l border-zinc-800 bg-zinc-900 sm:w-[430px]"
     mode="over"
     position="end"
   >
-    <app-item-filter-drawer (closeClicked)="filterDrawer.close()" />
+    @if (activeUtilityDrawer() === 'filter') {
+      <app-item-filter-drawer (closeClicked)="utilityDrawer.close()" />
+    } @else {
+      <app-item-sort-drawer (closeClicked)="utilityDrawer.close()" />
+    }
   </mat-drawer>
 
   <mat-drawer-content class="flex h-screen flex-col overflow-hidden">
     <app-item-browser-toolbar
       (categoryClicked)="toggleCategory()"
-      (filterClicked)="filterDrawer.toggle()"
+      (filterClicked)="openUtilityDrawer(utilityDrawer, 'filter')"
+      (sortClicked)="openUtilityDrawer(utilityDrawer, 'sort')"
     />
 
     <main class="flex-1 overflow-auto p-4">
