@@ -70,11 +70,7 @@ export function buildRankedItemCardModel(item: TibiaItem): RankedItemCardModel {
 
     pushNumber(primary, 'attack', 'itemCard.attack', item.extraSlot.attack ?? null, 'flash_on', 'primary');
 
-    if (primary.length === 0) {
-      primary.push(rawFact('subtype', null, item.extraSlot.subtype, 'radio_button_checked', 'primary'));
-    } else {
-      secondary.push(rawFact('subtype', null, item.extraSlot.subtype, 'radio_button_checked', 'secondary'));
-    }
+    secondary.push(rawFact('subtype', null, item.extraSlot.subtype, 'radio_button_checked', 'secondary'));
   }
 
   return {
