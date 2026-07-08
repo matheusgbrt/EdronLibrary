@@ -3,5 +3,12 @@
 }
 
 .toolbar-paginator {
+  display: none !important;
   width: 25rem;
+}
+
+@media (min-width: 1024px) {
+  .toolbar-paginator {
+    display: block !important;
+  }
 }
