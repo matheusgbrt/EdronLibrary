@@ -37,7 +37,7 @@ describe('buildRankedItemCardModel', () => {
     expect(model.meta.map((fact) => fact.key)).toEqual(['level', 'weight', 'imbuementSlots', 'classification']);
   });
 
-  it('prioritizes weapon attack, defense, and range when present', () => {
+  it('prioritizes weapon attack, armor, and range when present', () => {
     const item = {
       ...baseItem,
       kind: 'weapon',
@@ -56,7 +56,9 @@ describe('buildRankedItemCardModel', () => {
 
     const model = buildRankedItemCardModel(item);
 
-    expect(model.primary.map((fact) => fact.key)).toEqual(['attack', 'defense', 'range']);
+    expect(model.primary.map((fact) => fact.key)).toEqual(['attack', 'armor', 'range']);
+    expect(model.primary[0]).toEqual(expect.objectContaining({ icon: 'flash_on' }));
+    expect(model.primary[1]).toEqual(expect.objectContaining({ labelKey: 'itemCard.armor', value: '2' }));
     expect(model.secondary.map((fact) => fact.key)).toEqual(['weaponGroup', 'hands', 'damageType']);
   });
 
@@ -81,7 +83,7 @@ describe('buildRankedItemCardModel', () => {
 
     const model = buildRankedItemCardModel(item);
 
-    expect(model.primary.map((fact) => fact.key)).toEqual(['elementDamage.Earth', 'defense']);
+    expect(model.primary.map((fact) => fact.key)).toEqual(['elementDamage.Earth', 'armor']);
     expect(model.primary[0]).toEqual(
       expect.objectContaining({ label: 'Earth', value: '50', icon: 'terrain' })
     );
@@ -109,21 +111,37 @@ describe('buildRankedItemCardModel', () => {
     ]);
   });
 
-  it('prioritizes extra-slot subtype and attack', () => {
+  it('prioritizes extra-slot bonuses before subtype metadata', () => {
     const item = {
       ...baseItem,
       kind: 'extra-slot',
+      bonuses: { MagicLevel: 2 },
       extraSlot: {
-        subtype: 'Other',
+        subtype: 'Trinket',
         providesLight: false,
-        attack: 3,
         consumable: false
       }
     } satisfies TibiaItem;
 
     const model = buildRankedItemCardModel(item);
 
-    expect(model.primary.map((fact) => fact.key)).toEqual(['subtype', 'attack']);
+    expect(model.primary).toEqual([
+      expect.objectContaining({ key: 'MagicLevel', label: 'MagicLevel', value: '+2', icon: 'auto_awesome' })
+    ]);
+    expect(model.secondary).toEqual([expect.objectContaining({ key: 'subtype', value: 'Trinket' })]);
+  });
+
+  it('shows shield defense value as armor without a separate defense fact', () => {
+    const item = {
+      ...baseItem,
+      kind: 'armor',
+      armor: { slot: 'Shield', arm: 0, def: 32, twoHanded: false }
+    } satisfies TibiaItem;
+
+    const model = buildRankedItemCardModel(item);
+
+    expect(model.primary).toEqual([expect.objectContaining({ key: 'armor', value: '32' })]);
+    expect(model.primary.map((fact) => fact.labelKey)).not.toContain('itemCard.defense');
   });
 
   it('sorts bonuses and protections by value descending then alphabetically', () => {

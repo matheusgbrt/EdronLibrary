@@ -10,8 +10,7 @@ export type ItemSortKey =
   | 'classification'
   | 'maxTier'
   | 'armor'
-  | 'attack'
-  | 'defense';
+  | 'attack';
 
 export interface ItemSort {
   key: ItemSortKey;
@@ -63,14 +62,13 @@ export class ItemSortService {
       case 'maxTier':
         return item.maxTier;
       case 'armor':
-        return item.kind === 'armor' ? item.armor.arm : null;
+        if (item.kind === 'armor') {
+          return item.armor.arm !== null && item.armor.arm > 0 ? item.armor.arm : item.armor.def;
+        }
+
+        return item.kind === 'weapon' ? item.weapon.defense : null;
       case 'attack':
         return item.kind === 'weapon' ? item.weapon.attack : null;
-      case 'defense':
-        if (item.kind === 'weapon') {
-          return item.weapon.defense;
-        }
-        return item.kind === 'armor' ? item.armor.def : null;
       case 'name':
         return null;
     }

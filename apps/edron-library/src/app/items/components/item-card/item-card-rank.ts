@@ -22,10 +22,11 @@ export interface RankedItemCardModel {
 export function buildRankedItemCardModel(item: TibiaItem): RankedItemCardModel {
   const primary: RankedItemFact[] = [];
   const secondary: RankedItemFact[] = [];
+  const bonuses = buildBonusFacts(item);
+  const protections = buildProtectionFacts(item);
 
   if (item.kind === 'armor') {
-    pushNumber(primary, 'armor', 'itemCard.armor', item.armor.arm, 'security', 'primary');
-    pushNumber(primary, 'defense', 'itemCard.defense', item.armor.def, 'shield', 'primary');
+    pushNumber(primary, 'armor', 'itemCard.armor', defensiveArmorValue(item.armor.arm, item.armor.def), 'security', 'primary');
 
     if (primary.length === 0) {
       primary.push(rawFact('slot', null, item.armor.slot, 'checkroom', 'primary'));
@@ -35,9 +36,9 @@ export function buildRankedItemCardModel(item: TibiaItem): RankedItemCardModel {
   }
 
   if (item.kind === 'weapon') {
-    pushNumber(primary, 'attack', 'itemCard.attack', item.weapon.attack, 'swords', 'primary');
+    pushNumber(primary, 'attack', 'itemCard.attack', item.weapon.attack, 'flash_on', 'primary');
     primary.push(...buildElementDamageFacts(item.weapon.elementDamage));
-    pushNumber(primary, 'defense', 'itemCard.defense', item.weapon.defense, 'shield', 'primary');
+    pushNumber(primary, 'armor', 'itemCard.armor', item.weapon.defense, 'security', 'primary');
     pushNumber(primary, 'range', 'itemCard.range', item.weapon.range, 'track_changes', 'primary');
 
     secondary.push(rawFact('weaponGroup', null, item.weapon.group, 'category', 'secondary'));
@@ -58,17 +59,32 @@ export function buildRankedItemCardModel(item: TibiaItem): RankedItemCardModel {
   }
 
   if (item.kind === 'extra-slot') {
-    primary.push(rawFact('subtype', null, item.extraSlot.subtype, 'radio_button_checked', 'primary'));
-    pushNumber(primary, 'attack', 'itemCard.attack', item.extraSlot.attack ?? null, 'swords', 'primary');
+    primary.push(...buildPrimaryBonusFacts(item).slice(0, 2));
+    primary.push(...buildPrimaryProtectionFacts(item).slice(0, Math.max(0, 2 - primary.length)));
+    pushNumber(primary, 'attack', 'itemCard.attack', item.extraSlot.attack ?? null, 'flash_on', 'primary');
+
+    if (primary.length === 0) {
+      primary.push(rawFact('subtype', null, item.extraSlot.subtype, 'radio_button_checked', 'primary'));
+    } else {
+      secondary.push(rawFact('subtype', null, item.extraSlot.subtype, 'radio_button_checked', 'secondary'));
+    }
   }
 
   return {
     primary,
     secondary,
     meta: buildMetaFacts(item),
-    bonuses: buildBonusFacts(item),
-    protections: buildProtectionFacts(item)
+    bonuses,
+    protections
   };
+}
+
+function defensiveArmorValue(armor: number | null, defense: number | null): number | null {
+  if (armor !== null && armor > 0) {
+    return armor;
+  }
+
+  return defense;
 }
 
 function buildMetaFacts(item: TibiaItem): RankedItemFact[] {
@@ -90,6 +106,20 @@ function buildBonusFacts(item: TibiaItem): RankedItemFact[] {
 
 function buildProtectionFacts(item: TibiaItem): RankedItemFact[] {
   return sortedEntries(item.protections).map(([key, value]) => rawFact(key, null, `${key} ${value}%`, 'health_and_safety', 'protection'));
+}
+
+function buildPrimaryBonusFacts(item: TibiaItem): RankedItemFact[] {
+  return sortedEntries(item.bonuses).map(([key, value]) => ({
+    ...rawFact(key, null, `+${value}`, bonusIcon(key), 'primary'),
+    label: key
+  }));
+}
+
+function buildPrimaryProtectionFacts(item: TibiaItem): RankedItemFact[] {
+  return sortedEntries(item.protections).map(([key, value]) => ({
+    ...rawFact(key, null, `${value}%`, 'health_and_safety', 'primary'),
+    label: key
+  }));
 }
 
 function buildElementDamageFacts(elementDamage: Partial<Record<string, number>> | undefined): RankedItemFact[] {
@@ -138,7 +168,7 @@ function rawFact(
 
 function bonusIcon(key: string): string {
   const icons: Record<string, string> = {
-    Sword: 'swords',
+    Sword: 'flash_on',
     Axe: 'hardware',
     Club: 'sports_martial_arts',
     Distance: 'my_location',
@@ -152,7 +182,7 @@ function bonusIcon(key: string): string {
 
 function elementIcon(key: string): string {
   const icons: Record<string, string> = {
-    Physical: 'swords',
+    Physical: 'flash_on',
     Fire: 'local_fire_department',
     Earth: 'terrain',
     Energy: 'electric_bolt',
