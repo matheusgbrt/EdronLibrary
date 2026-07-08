@@ -46,6 +46,7 @@ Primary:
 - `Armor` using `armor.def` as a fallback for shields and spellbooks.
 - `Slot` when no armor value or defensive fallback exists.
 
+
 Secondary:
 
 - Armor slot.
