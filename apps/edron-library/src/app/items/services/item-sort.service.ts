@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { TibiaItem } from '../models';
+import { Element, SkillBonus, TibiaItem } from '../models';
 
-export type ItemSortKey =
+export type BaseItemSortKey =
   | 'name'
   | 'level'
   | 'weight'
@@ -10,20 +10,86 @@ export type ItemSortKey =
   | 'classification'
   | 'maxTier'
   | 'armor'
-  | 'attack';
+  | 'attack'
+  | 'range'
+  | 'hitPercent';
+
+export type ElementDamageSortKey = `elementDamage.${Element}`;
+export type SkillBonusSortKey = `bonus.${SkillBonus}`;
+export type ProtectionSortKey = `protection.${Element}`;
+export type ItemSortKey =
+  | BaseItemSortKey
+  | ElementDamageSortKey
+  | SkillBonusSortKey
+  | ProtectionSortKey;
 
 export interface ItemSort {
   key: ItemSortKey;
   direction: 'asc' | 'desc';
 }
 
+export interface ItemSortOption {
+  group: 'General' | 'Combat' | 'Elemental damage' | 'Skill bonuses' | 'Protections';
+  label: string;
+  key: ItemSortKey;
+  defaultDirection: ItemSort['direction'];
+}
+
+export const DEFAULT_ITEM_SORTS: ItemSort[] = [{ key: 'name', direction: 'asc' }];
+
+export const ITEM_SORT_OPTIONS: ItemSortOption[] = [
+  { group: 'General', label: 'Name', key: 'name', defaultDirection: 'asc' },
+  { group: 'General', label: 'Level', key: 'level', defaultDirection: 'desc' },
+  { group: 'General', label: 'Weight', key: 'weight', defaultDirection: 'asc' },
+  { group: 'General', label: 'Imbuement slots', key: 'imbuementSlots', defaultDirection: 'desc' },
+  { group: 'General', label: 'Classification', key: 'classification', defaultDirection: 'desc' },
+  { group: 'General', label: 'Max tier', key: 'maxTier', defaultDirection: 'desc' },
+  { group: 'Combat', label: 'Attack', key: 'attack', defaultDirection: 'desc' },
+  { group: 'Combat', label: 'Armor', key: 'armor', defaultDirection: 'desc' },
+  { group: 'Combat', label: 'Range', key: 'range', defaultDirection: 'desc' },
+  { group: 'Combat', label: 'Hit %', key: 'hitPercent', defaultDirection: 'desc' },
+  { group: 'Elemental damage', label: 'Fire damage', key: 'elementDamage.Fire', defaultDirection: 'desc' },
+  { group: 'Elemental damage', label: 'Earth damage', key: 'elementDamage.Earth', defaultDirection: 'desc' },
+  { group: 'Elemental damage', label: 'Energy damage', key: 'elementDamage.Energy', defaultDirection: 'desc' },
+  { group: 'Elemental damage', label: 'Ice damage', key: 'elementDamage.Ice', defaultDirection: 'desc' },
+  { group: 'Elemental damage', label: 'Holy damage', key: 'elementDamage.Holy', defaultDirection: 'desc' },
+  { group: 'Elemental damage', label: 'Death damage', key: 'elementDamage.Death', defaultDirection: 'desc' },
+  { group: 'Skill bonuses', label: 'Sword', key: 'bonus.Sword', defaultDirection: 'desc' },
+  { group: 'Skill bonuses', label: 'Axe', key: 'bonus.Axe', defaultDirection: 'desc' },
+  { group: 'Skill bonuses', label: 'Club', key: 'bonus.Club', defaultDirection: 'desc' },
+  { group: 'Skill bonuses', label: 'Distance', key: 'bonus.Distance', defaultDirection: 'desc' },
+  { group: 'Skill bonuses', label: 'Shielding', key: 'bonus.Shielding', defaultDirection: 'desc' },
+  { group: 'Skill bonuses', label: 'Magic level', key: 'bonus.MagicLevel', defaultDirection: 'desc' },
+  { group: 'Skill bonuses', label: 'Fist', key: 'bonus.Fist', defaultDirection: 'desc' },
+  { group: 'Protections', label: 'Physical protection', key: 'protection.Physical', defaultDirection: 'desc' },
+  { group: 'Protections', label: 'Fire protection', key: 'protection.Fire', defaultDirection: 'desc' },
+  { group: 'Protections', label: 'Earth protection', key: 'protection.Earth', defaultDirection: 'desc' },
+  { group: 'Protections', label: 'Energy protection', key: 'protection.Energy', defaultDirection: 'desc' },
+  { group: 'Protections', label: 'Ice protection', key: 'protection.Ice', defaultDirection: 'desc' },
+  { group: 'Protections', label: 'Holy protection', key: 'protection.Holy', defaultDirection: 'desc' },
+  { group: 'Protections', label: 'Death protection', key: 'protection.Death', defaultDirection: 'desc' }
+];
+
 @Injectable({ providedIn: 'root' })
 export class ItemSortService {
-  sortItems(items: TibiaItem[], sort: ItemSort): TibiaItem[] {
-    return [...items].sort((left, right) => this.compareItems(left, right, sort));
+  sortItems(items: TibiaItem[], sort: ItemSort | ItemSort[]): TibiaItem[] {
+    const sorts = Array.isArray(sort) ? sort : [sort];
+    return [...items].sort((left, right) => this.compareItems(left, right, sorts));
   }
 
-  private compareItems(left: TibiaItem, right: TibiaItem, sort: ItemSort): number {
+  private compareItems(left: TibiaItem, right: TibiaItem, sorts: ItemSort[]): number {
+    for (const sort of sorts) {
+      const compared = this.compareBySort(left, right, sort);
+
+      if (compared !== 0) {
+        return compared;
+      }
+    }
+
+    return left.name.localeCompare(right.name);
+  }
+
+  private compareBySort(left: TibiaItem, right: TibiaItem, sort: ItemSort): number {
     const direction = sort.direction === 'asc' ? 1 : -1;
 
     if (sort.key === 'name') {
@@ -46,10 +112,25 @@ export class ItemSortService {
     }
 
     const compared = leftValue - rightValue;
-    return compared === 0 ? left.name.localeCompare(right.name) : compared * direction;
+    return compared * direction;
   }
 
   private numericValue(item: TibiaItem, key: ItemSortKey): number | null {
+    if (this.isElementDamageKey(key)) {
+      const element = key.replace('elementDamage.', '') as Element;
+      return item.kind === 'weapon' ? item.weapon.elementDamage?.[element] ?? null : null;
+    }
+
+    if (this.isSkillBonusKey(key)) {
+      const skill = key.replace('bonus.', '') as SkillBonus;
+      return item.bonuses[skill] ?? null;
+    }
+
+    if (this.isProtectionKey(key)) {
+      const element = key.replace('protection.', '') as Element;
+      return item.protections[element] ?? null;
+    }
+
     switch (key) {
       case 'level':
         return item.level;
@@ -69,8 +150,24 @@ export class ItemSortService {
         return item.kind === 'weapon' ? item.weapon.defense : null;
       case 'attack':
         return item.kind === 'weapon' ? item.weapon.attack : null;
+      case 'range':
+        return item.kind === 'weapon' ? item.weapon.range : null;
+      case 'hitPercent':
+        return item.kind === 'weapon' ? item.weapon.hitPercent : null;
       case 'name':
         return null;
     }
+  }
+
+  private isElementDamageKey(key: ItemSortKey): key is ElementDamageSortKey {
+    return key.startsWith('elementDamage.');
+  }
+
+  private isSkillBonusKey(key: ItemSortKey): key is SkillBonusSortKey {
+    return key.startsWith('bonus.');
+  }
+
+  private isProtectionKey(key: ItemSortKey): key is ProtectionSortKey {
+    return key.startsWith('protection.');
   }
 }

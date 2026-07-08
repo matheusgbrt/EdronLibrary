@@ -8,7 +8,10 @@ import { ItemBrowserToolbarComponent } from '../../components/item-browser-toolb
 import { ItemCardGridComponent } from '../../components/item-card-grid/item-card-grid.component';
 import { ItemCategorySidebarComponent } from '../../components/item-category-sidebar/item-category-sidebar.component';
 import { ItemFilterDrawerComponent } from '../../components/item-filter-drawer/item-filter-drawer.component';
+import { ItemSortDrawerComponent } from '../../components/item-sort-drawer/item-sort-drawer.component';
 import { ItemBrowserStateService } from '../../services/item-browser-state.service';
+
+type UtilityDrawer = 'filter' | 'sort';
 
 @Component({
   selector: 'app-item-browser-page',
@@ -18,6 +21,7 @@ import { ItemBrowserStateService } from '../../services/item-browser-state.servi
     ItemCardGridComponent,
     ItemCategorySidebarComponent,
     ItemFilterDrawerComponent,
+    ItemSortDrawerComponent,
     MatSidenavModule
   ],
   templateUrl: './item-browser-page.component.html',
@@ -33,6 +37,7 @@ export class ItemBrowserPageComponent implements OnInit {
     { initialValue: false }
   );
   private readonly mobileCategoryOpened = signal(false);
+  protected readonly activeUtilityDrawer = signal<UtilityDrawer>('filter');
   protected readonly categoryOpened = computed(() => !this.isSmallScreen() || this.mobileCategoryOpened());
 
   ngOnInit(): void {
@@ -47,5 +52,10 @@ export class ItemBrowserPageComponent implements OnInit {
 
   protected closeCategory(): void {
     this.mobileCategoryOpened.set(false);
+  }
+
+  protected openUtilityDrawer(drawer: { open: () => void }, activeDrawer: UtilityDrawer): void {
+    this.activeUtilityDrawer.set(activeDrawer);
+    drawer.open();
   }
 }

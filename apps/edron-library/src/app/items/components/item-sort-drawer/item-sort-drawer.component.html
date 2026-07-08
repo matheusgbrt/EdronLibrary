@@ -1,0 +1,96 @@
+<div class="flex h-full flex-col">
+  <header class="flex min-h-16 items-center gap-3 border-b border-zinc-800 px-4">
+    <button
+      mat-icon-button
+      type="button"
+      aria-label="Close sorting"
+      matTooltip="Close sorting"
+      (click)="closeClicked.emit()"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <div class="min-w-0 flex-1">
+      <h2 class="text-base font-semibold text-zinc-100">Sorting</h2>
+      <p class="text-xs text-zinc-500">Priority order</p>
+    </div>
+    <button mat-button type="button" class="!text-violet-300" (click)="resetSorts()">
+      Reset
+    </button>
+  </header>
+
+  <div class="flex-1 overflow-auto px-4 py-4">
+    <div class="space-y-3">
+      @for (sort of state.sorts(); track $index; let index = $index; let first = $first; let last = $last) {
+        <section class="sort-row">
+          <div class="flex items-center gap-2">
+            <div class="flex h-7 w-7 items-center justify-center rounded border border-zinc-700 text-xs font-semibold text-zinc-300">
+              {{ index + 1 }}
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="truncate text-sm font-semibold text-zinc-100">{{ sortLabel(sort) }}</p>
+              <p class="text-xs text-zinc-500">{{ directionLabel(sort.direction) }}</p>
+            </div>
+            <button
+              mat-icon-button
+              type="button"
+              aria-label="Move sort up"
+              matTooltip="Move up"
+              [disabled]="first"
+              (click)="moveSort(index, -1)"
+            >
+              <mat-icon>keyboard_arrow_up</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              type="button"
+              aria-label="Move sort down"
+              matTooltip="Move down"
+              [disabled]="last"
+              (click)="moveSort(index, 1)"
+            >
+              <mat-icon>keyboard_arrow_down</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              type="button"
+              aria-label="Remove sort"
+              matTooltip="Remove"
+              (click)="removeSort(index)"
+            >
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+
+          <div class="mt-3 grid grid-cols-[1fr_8.25rem] gap-3">
+            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+              <mat-label>Field</mat-label>
+              <mat-select [ngModel]="sort.key" (ngModelChange)="setSortKey(index, $event)">
+                @for (group of groups; track group) {
+                  <mat-optgroup [label]="group">
+                    @for (option of optionsFor(group); track option.key) {
+                      <mat-option [value]="option.key">{{ option.label }}</mat-option>
+                    }
+                  </mat-optgroup>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+              <mat-label>Direction</mat-label>
+              <mat-select [ngModel]="sort.direction" (ngModelChange)="setDirection(index, $event)">
+                @for (direction of directions; track direction) {
+                  <mat-option [value]="direction">{{ directionLabel(direction) }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </section>
+      }
+    </div>
+
+    <button mat-stroked-button type="button" class="mt-4 w-full !border-zinc-700 !text-zinc-100" (click)="addSort()">
+      <mat-icon>add</mat-icon>
+      Add sort
+    </button>
+  </div>
+</div>
