@@ -1,0 +1,174 @@
+<div class="flex h-full flex-col">
+  <header class="flex min-h-16 items-center gap-3 border-b border-zinc-800 px-4">
+    <button
+      mat-icon-button
+      type="button"
+      [attr.aria-label]="'filters.closeFilters' | transloco"
+      [matTooltip]="'filters.closeFilters' | transloco"
+      (click)="closeClicked.emit()"
+    >
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <div class="min-w-0 flex-1">
+      <h2 class="text-base font-semibold text-zinc-100">{{ 'items.filters' | transloco }}</h2>
+      <p class="text-xs text-zinc-500">{{ 'common.liveResults' | transloco }}</p>
+    </div>
+    <button mat-button type="button" class="!text-violet-300" (click)="state.resetFilters()">
+      {{ 'common.clearAll' | transloco }}
+    </button>
+  </header>
+
+  <div class="flex-1 overflow-auto px-4">
+    <app-filter-section [title]="'filters.searchTitle' | transloco">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full">
+        <mat-label>{{ 'filters.searchLabel' | transloco }}</mat-label>
+        <input
+          matInput
+          type="search"
+          [placeholder]="'filters.searchPlaceholder' | transloco"
+          [ngModel]="state.filters().query"
+          (ngModelChange)="patchQuery($event)"
+        />
+      </mat-form-field>
+    </app-filter-section>
+
+    <app-filter-section [title]="'filters.itemType' | transloco">
+      <app-chip-toggle-filter
+        [options]="kinds"
+        [selected]="state.filters().kinds"
+        (selectionChanged)="patchKinds($event)"
+      />
+    </app-filter-section>
+
+    <app-filter-section [title]="'filters.vocation' | transloco">
+      <app-chip-toggle-filter
+        [options]="vocations"
+        [selected]="state.filters().vocations"
+        (selectionChanged)="patchVocations($event)"
+      />
+    </app-filter-section>
+
+    <app-filter-section [title]="'filters.levelRange' | transloco">
+      <app-number-range-filter
+        [min]="state.filters().minLevel"
+        [max]="state.filters().maxLevel"
+        [minLabel]="'filters.minLevel' | transloco"
+        [maxLabel]="'filters.maxLevel' | transloco"
+        (rangeChanged)="patchLevel($event)"
+      />
+    </app-filter-section>
+
+    <app-filter-section [title]="'filters.armorSlot' | transloco">
+      <app-chip-toggle-filter
+        [options]="armorSlots"
+        [selected]="state.filters().armorSlots"
+        (selectionChanged)="patchArmorSlots($event)"
+      />
+    </app-filter-section>
+
+    <app-filter-section [title]="'filters.weaponGroup' | transloco">
+      <app-chip-toggle-filter
+        [options]="weaponGroups"
+        [selected]="state.filters().weaponGroups"
+        (selectionChanged)="patchWeaponGroups($event)"
+      />
+    </app-filter-section>
+
+    <app-filter-section [title]="'filters.extraSlotSubtype' | transloco">
+      <app-chip-toggle-filter
+        [options]="extraSlotSubtypes"
+        [selected]="state.filters().extraSlotSubtypes"
+        (selectionChanged)="patchExtraSlotSubtypes($event)"
+      />
+    </app-filter-section>
+
+    <app-filter-section [title]="'filters.skillBonuses' | transloco">
+      <div class="grid grid-cols-2 gap-3">
+        @for (skill of skills; track skill) {
+          <mat-form-field appearance="outline" subscriptSizing="dynamic">
+            <mat-label>{{ skill }}</mat-label>
+            <input
+              matInput
+              type="number"
+              [ngModel]="bonusValue(skill)"
+              (ngModelChange)="setBonus(skill, $event)"
+            />
+          </mat-form-field>
+        }
+      </div>
+    </app-filter-section>
+
+    <app-filter-section [title]="'filters.protections' | transloco">
+      <div class="grid grid-cols-2 gap-3">
+        @for (element of elements; track element) {
+          <mat-form-field appearance="outline" subscriptSizing="dynamic">
+            <mat-label>{{ element }} %</mat-label>
+            <input
+              matInput
+              type="number"
+              [ngModel]="protectionValue(element)"
+              (ngModelChange)="setProtection(element, $event)"
+            />
+          </mat-form-field>
+        }
+      </div>
+    </app-filter-section>
+
+    <app-filter-section [title]="'filters.imbuementsAndClass' | transloco">
+      <div class="grid grid-cols-3 gap-3">
+        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+          <mat-label>{{ 'filters.imbuementSlots' | transloco }}</mat-label>
+          <input
+            matInput
+            type="number"
+            [ngModel]="state.filters().minImbuementSlots"
+            (ngModelChange)="patchNumberFilter('minImbuementSlots', $event)"
+          />
+        </mat-form-field>
+        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+          <mat-label>{{ 'filters.classification' | transloco }}</mat-label>
+          <mat-select
+            [ngModel]="state.filters().classification"
+            (ngModelChange)="patchNumberFilter('classification', $event)"
+          >
+            <mat-option [value]="null">{{ 'common.any' | transloco }}</mat-option>
+            @for (classification of classifications; track classification) {
+              <mat-option [value]="classification">{{ classification }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+          <mat-label>{{ 'filters.maxTier' | transloco }}</mat-label>
+          <input
+            matInput
+            type="number"
+            [ngModel]="state.filters().minMaxTier"
+            (ngModelChange)="patchNumberFilter('minMaxTier', $event)"
+          />
+        </mat-form-field>
+      </div>
+    </app-filter-section>
+
+    <app-filter-section [title]="'filters.weight' | transloco">
+      <app-number-range-filter
+        [min]="state.filters().minWeight"
+        [max]="state.filters().maxWeight"
+        [minLabel]="'filters.minWeight' | transloco"
+        [maxLabel]="'filters.maxWeight' | transloco"
+        (rangeChanged)="patchWeight($event)"
+      />
+    </app-filter-section>
+
+    <app-filter-section [title]="'filters.dropsFrom' | transloco">
+      <mat-form-field appearance="outline" subscriptSizing="dynamic" class="w-full">
+        <mat-label>{{ 'filters.dropsFromPlaceholder' | transloco }}</mat-label>
+        <input
+          matInput
+          [placeholder]="'filters.dropsFromPlaceholder' | transloco"
+          [ngModel]="dropSourceText()"
+          (ngModelChange)="patchDropSource($event)"
+        />
+      </mat-form-field>
+    </app-filter-section>
+  </div>
+</div>

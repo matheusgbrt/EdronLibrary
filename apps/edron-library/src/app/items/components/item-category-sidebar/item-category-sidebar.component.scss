@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.category-button {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 0.5rem;
+  color: rgb(212 212 216);
+  display: flex;
+  gap: 0.625rem;
+  min-height: 2.25rem;
+  padding: 0.5rem 0.625rem;
+  width: 100%;
+}
+
+.category-button:hover,
+.category-button-active {
+  background: rgb(39 39 42 / 0.8);
+  border-color: rgb(124 58 237 / 0.45);
+  color: white;
+}

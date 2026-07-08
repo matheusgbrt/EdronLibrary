@@ -1,0 +1,23 @@
+{
+  "name": "edron-library-data-capturer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "data:capture": "tsx src/commands/capture-items.ts",
+    "data:generate": "tsx src/commands/generate-items.ts",
+    "data:validate": "tsx src/commands/validate-items.ts",
+    "data:all": "npm run data:capture && npm run data:generate && npm run data:validate"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "p-limit": "^7.3.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.0",
+    "prettier": "^3.9.4",
+    "tsx": "^4.23.0",
+    "typescript": "^6.0.3"
+  }
+}

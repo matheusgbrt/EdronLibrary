@@ -1,0 +1,21 @@
+<div class="grid grid-cols-2 gap-3">
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>{{ minLabel() }}</mat-label>
+    <input
+      matInput
+      type="number"
+      [ngModel]="min()"
+      (ngModelChange)="setMin($event)"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <mat-label>{{ maxLabel() }}</mat-label>
+    <input
+      matInput
+      type="number"
+      [ngModel]="max()"
+      (ngModelChange)="setMax($event)"
+    />
+  </mat-form-field>
+</div>
