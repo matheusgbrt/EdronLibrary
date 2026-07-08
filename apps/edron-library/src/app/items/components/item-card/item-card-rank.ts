@@ -22,8 +22,8 @@ export interface RankedItemCardModel {
 export function buildRankedItemCardModel(item: TibiaItem): RankedItemCardModel {
   const primary: RankedItemFact[] = [];
   const secondary: RankedItemFact[] = [];
-  const bonuses = buildBonusFacts(item);
-  const protections = buildProtectionFacts(item);
+  let bonuses = buildBonusFacts(item);
+  let protections = buildProtectionFacts(item);
 
   if (item.kind === 'armor') {
     pushNumber(primary, 'armor', 'itemCard.armor', defensiveArmorValue(item.armor.arm, item.armor.def), 'security', 'primary');
@@ -59,8 +59,15 @@ export function buildRankedItemCardModel(item: TibiaItem): RankedItemCardModel {
   }
 
   if (item.kind === 'extra-slot') {
-    primary.push(...buildPrimaryBonusFacts(item).slice(0, 2));
-    primary.push(...buildPrimaryProtectionFacts(item).slice(0, Math.max(0, 2 - primary.length)));
+    const promotedBonuses = buildPrimaryBonusFacts(item).slice(0, 2);
+    primary.push(...promotedBonuses);
+
+    const promotedProtections = buildPrimaryProtectionFacts(item).slice(0, Math.max(0, 2 - primary.length));
+    primary.push(...promotedProtections);
+
+    bonuses = removePromotedFacts(bonuses, promotedBonuses);
+    protections = removePromotedFacts(protections, promotedProtections);
+
     pushNumber(primary, 'attack', 'itemCard.attack', item.extraSlot.attack ?? null, 'flash_on', 'primary');
 
     if (primary.length === 0) {
@@ -106,6 +113,15 @@ function buildBonusFacts(item: TibiaItem): RankedItemFact[] {
 
 function buildProtectionFacts(item: TibiaItem): RankedItemFact[] {
   return sortedEntries(item.protections).map(([key, value]) => rawFact(key, null, `${key} ${value}%`, 'health_and_safety', 'protection'));
+}
+
+function removePromotedFacts(facts: RankedItemFact[], promotedFacts: RankedItemFact[]): RankedItemFact[] {
+  if (promotedFacts.length === 0) {
+    return facts;
+  }
+
+  const promotedKeys = new Set(promotedFacts.map((fact) => fact.key));
+  return facts.filter((fact) => !promotedKeys.has(fact.key));
 }
 
 function buildPrimaryBonusFacts(item: TibiaItem): RankedItemFact[] {
