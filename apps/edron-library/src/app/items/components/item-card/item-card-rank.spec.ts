@@ -116,6 +116,7 @@ describe('buildRankedItemCardModel', () => {
       ...baseItem,
       kind: 'extra-slot',
       bonuses: { MagicLevel: 2 },
+      protections: { Earth: 4, Energy: 4, Fire: 4 },
       extraSlot: {
         subtype: 'Trinket',
         providesLight: false,
@@ -126,9 +127,12 @@ describe('buildRankedItemCardModel', () => {
     const model = buildRankedItemCardModel(item);
 
     expect(model.primary).toEqual([
-      expect.objectContaining({ key: 'MagicLevel', label: 'MagicLevel', value: '+2', icon: 'auto_awesome' })
+      expect.objectContaining({ key: 'MagicLevel', label: 'MagicLevel', value: '+2', icon: 'auto_awesome' }),
+      expect.objectContaining({ key: 'Earth', label: 'Earth', value: '4%', icon: 'health_and_safety' })
     ]);
     expect(model.secondary).toEqual([expect.objectContaining({ key: 'subtype', value: 'Trinket' })]);
+    expect(model.bonuses).toEqual([]);
+    expect(model.protections.map((fact) => fact.key)).toEqual(['Energy', 'Fire']);
   });
 
   it('shows shield defense value as armor without a separate defense fact', () => {
