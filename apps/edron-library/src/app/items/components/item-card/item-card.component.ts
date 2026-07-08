@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 
 import { TibiaItem } from '../../models';
 import { ItemExternalLinkService, ItemExternalLinks } from '../../services/item-external-link.service';
@@ -22,26 +21,21 @@ interface ItemCardDisplayModel {
 @Component({
   selector: 'app-item-card',
   standalone: true,
-  imports: [MatIconModule, TranslocoPipe],
+  imports: [MatIconModule],
   templateUrl: './item-card.component.html',
   styleUrl: './item-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ItemCardComponent {
   readonly item = input.required<TibiaItem>();
-  private readonly transloco = inject(TranslocoService);
   private readonly externalLinkService = inject(ItemExternalLinkService);
-  private readonly activeLang = this.transloco.activeLang;
 
   cardModel(item: TibiaItem): ItemCardDisplayModel {
     return this.toDisplayModel(buildRankedItemCardModel(item));
   }
 
   vocationText(item: TibiaItem): string {
-    const lang = this.activeLang();
-    return item.vocations.includes('None')
-      ? this.translate('itemCard.unrestricted', lang)
-      : item.vocations.join(', ');
+    return item.vocations.includes('None') ? 'Unrestricted' : item.vocations.join(', ');
   }
 
   secondaryText(fact: DisplayItemFact): string {
@@ -63,14 +57,9 @@ export class ItemCardComponent {
   }
 
   private toDisplayFact(fact: RankedItemFact): DisplayItemFact {
-    const lang = this.activeLang();
-    const displayLabel = fact.labelKey === null ? fact.label ?? fact.key : this.translate(fact.labelKey, lang);
-    const displayValue = fact.value.startsWith('itemCard.') ? this.translate(fact.value, lang) : fact.value;
+    const displayLabel = fact.label ?? fact.key;
+    const displayValue = fact.value;
 
     return { ...fact, displayLabel, displayValue };
-  }
-
-  private translate(key: string, lang: string): string {
-    return this.transloco.translate(key, {}, lang);
   }
 }

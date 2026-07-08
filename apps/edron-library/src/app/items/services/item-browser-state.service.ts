@@ -69,7 +69,7 @@ export class ItemBrowserStateService {
         this.loading.set(false);
       },
       error: () => {
-        this.loadError.set('common.loadError');
+        this.loadError.set('Unable to load item data.');
         this.loading.set(false);
       }
     });

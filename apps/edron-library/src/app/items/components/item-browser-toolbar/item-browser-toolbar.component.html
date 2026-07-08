@@ -4,8 +4,8 @@
       mat-icon-button
       class="md:!hidden"
       type="button"
-      [attr.aria-label]="'filters.openCategories' | transloco"
-      [matTooltip]="'items.categories' | transloco"
+      aria-label="Open categories"
+      matTooltip="Categories"
       (click)="categoryClicked.emit()"
     >
       <mat-icon>menu</mat-icon>
@@ -14,8 +14,8 @@
     <button
       mat-icon-button
       type="button"
-      [attr.aria-label]="'filters.openFilters' | transloco"
-      [matTooltip]="'items.filters' | transloco"
+      aria-label="Open filters"
+      matTooltip="Filters"
       (click)="filterClicked.emit()"
     >
       <mat-icon>filter_alt</mat-icon>
@@ -27,23 +27,21 @@
     </button>
 
     <mat-menu #sortMenu="matMenu">
-      @for (option of sortOptions; track option.labelKey) {
+      @for (option of sortOptions; track option.label) {
         <button mat-menu-item type="button" (click)="setSort(option)">
           @if (state.sort().key === option.key && state.sort().direction === option.direction) {
             <mat-icon>check</mat-icon>
           }
-          <span>{{ option.labelKey | transloco }}</span>
+          <span>{{ option.label }}</span>
         </button>
       }
     </mat-menu>
 
     <div class="ml-auto flex items-center gap-3 text-xs text-zinc-400 sm:text-sm">
       <span class="whitespace-nowrap">
-        {{ 'items.results' | transloco: { start: state.pageStart(), end: state.pageEnd(), total: state.totalCount() } }}
+        {{ state.pageStart() }} - {{ state.pageEnd() }} of {{ state.totalCount() }}
       </span>
     </div>
-
-    <app-language-switcher />
   </div>
 
   <mat-paginator
@@ -53,6 +51,6 @@
     [pageSize]="state.pageSize()"
     [pageSizeOptions]="[10, 20, 50, 100]"
     (page)="onPage($event)"
-    [attr.aria-label]="'items.pageSize' | transloco"
+    aria-label="Items per page"
   />
 </mat-toolbar>

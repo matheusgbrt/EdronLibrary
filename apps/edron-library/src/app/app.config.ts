@@ -3,16 +3,14 @@ import { provideHttpClient } from '@angular/common/http';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { provideRouter } from '@angular/router';
 
-import { provideAppTransloco } from './core/i18n/transloco.config';
-import { TranslocoPaginatorIntl } from './core/i18n/transloco-paginator-intl';
 import { routes } from './app.routes';
+import { EnglishPaginatorIntl } from './core/paginator/english-paginator-intl';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
-    ...provideAppTransloco(),
-    { provide: MatPaginatorIntl, useClass: TranslocoPaginatorIntl },
+    { provide: MatPaginatorIntl, useClass: EnglishPaginatorIntl },
     provideRouter(routes)
   ]
 };

@@ -1,15 +1,15 @@
 @if (state.loading()) {
   <div class="flex h-80 items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900/60 text-zinc-400">
-    {{ 'common.loading' | transloco }}
+    Loading...
   </div>
 } @else if (state.loadError()) {
   <div class="flex h-80 items-center justify-center rounded-lg border border-red-900/70 bg-red-950/30 text-red-300">
-    {{ state.loadError()! | transloco }}
+    {{ state.loadError()! }}
   </div>
 } @else if (state.pagedItems().length === 0) {
   <div class="flex h-80 flex-col items-center justify-center rounded-lg border border-zinc-800 bg-zinc-900/60 text-zinc-400">
     <mat-icon class="!h-10 !w-10 !text-4xl !text-zinc-600">search_off</mat-icon>
-    <span class="mt-2">{{ 'common.noResults' | transloco }}</span>
+    <span class="mt-2">No results</span>
   </div>
 } @else {
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
@@ -26,5 +26,5 @@
   [pageSize]="state.pageSize()"
   [pageSizeOptions]="[10, 20, 50, 100]"
   (page)="onPage($event)"
-  [attr.aria-label]="'items.pageSize' | transloco"
+  aria-label="Items per page"
 />

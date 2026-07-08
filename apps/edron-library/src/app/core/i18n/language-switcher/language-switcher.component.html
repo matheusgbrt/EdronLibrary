@@ -1,9 +1,0 @@
-<mat-form-field appearance="outline" subscriptSizing="dynamic" class="language-field">
-  <mat-label>{{ 'common.language' | transloco }}</mat-label>
-
-  <mat-select [value]="activeLang()" (selectionChange)="setLanguage($event)">
-    @for (language of languages; track language.code) {
-      <mat-option [value]="language.code">{{ language.label }}</mat-option>
-    }
-  </mat-select>
-</mat-form-field>

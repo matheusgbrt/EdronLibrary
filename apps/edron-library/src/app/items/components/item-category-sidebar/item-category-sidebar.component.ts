@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 
 import { ArmorSlot, ExtraSlotSubtype, ItemKind, WeaponGroup } from '../../models';
 import { CategoryFilter, ItemBrowserStateService } from '../../services/item-browser-state.service';
@@ -18,18 +17,13 @@ interface CategoryGroup {
 @Component({
   selector: 'app-item-category-sidebar',
   standalone: true,
-  imports: [MatIconModule, MatTooltipModule, TranslocoPipe],
+  imports: [MatIconModule, MatTooltipModule],
   templateUrl: './item-category-sidebar.component.html',
   styleUrl: './item-category-sidebar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ItemCategorySidebarComponent {
   protected readonly state = inject(ItemBrowserStateService);
-  private readonly transloco = inject(TranslocoService);
-  protected readonly browserLabel = computed(() => {
-    const lang = this.transloco.activeLang();
-    return this.transloco.translate('items.browser', {}, lang);
-  });
 
   protected readonly allCategory: CategoryEntry = {
     label: 'All items',

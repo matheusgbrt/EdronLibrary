@@ -31,7 +31,7 @@ describe('buildRankedItemCardModel', () => {
     const model = buildRankedItemCardModel(item);
 
     expect(model.primary[0]).toEqual(
-      expect.objectContaining({ key: 'armor', labelKey: 'itemCard.armor', value: '11', icon: 'security' })
+      expect.objectContaining({ key: 'armor', label: 'Armor', value: '11', icon: 'security' })
     );
     expect(model.secondary).toEqual([expect.objectContaining({ key: 'slot', value: 'Helmet', icon: 'checkroom' })]);
     expect(model.meta.map((fact) => fact.key)).toEqual(['level', 'weight', 'imbuementSlots', 'classification']);
@@ -58,7 +58,7 @@ describe('buildRankedItemCardModel', () => {
 
     expect(model.primary.map((fact) => fact.key)).toEqual(['attack', 'armor', 'range']);
     expect(model.primary[0]).toEqual(expect.objectContaining({ icon: 'flash_on' }));
-    expect(model.primary[1]).toEqual(expect.objectContaining({ labelKey: 'itemCard.armor', value: '2' }));
+    expect(model.primary[1]).toEqual(expect.objectContaining({ label: 'Armor', value: '2' }));
     expect(model.secondary.map((fact) => fact.key)).toEqual(['weaponGroup', 'hands', 'damageType']);
   });
 
@@ -162,7 +162,7 @@ describe('buildRankedItemCardModel', () => {
     const model = buildRankedItemCardModel(item);
 
     expect(model.primary).toEqual([expect.objectContaining({ key: 'armor', value: '32' })]);
-    expect(model.primary.map((fact) => fact.labelKey)).not.toContain('itemCard.defense');
+    expect(model.primary.map((fact) => fact.label)).not.toContain('Defense');
   });
 
   it('sorts bonuses and protections by value descending then alphabetically', () => {
