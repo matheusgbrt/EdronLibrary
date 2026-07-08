@@ -2,7 +2,21 @@ import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core
 import { MatIconModule } from '@angular/material/icon';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 
-import { Element, SkillBonus, TibiaItem } from '../../models';
+import { TibiaItem } from '../../models';
+import { buildRankedItemCardModel, RankedItemCardModel, RankedItemFact } from './item-card-rank';
+
+interface DisplayItemFact extends RankedItemFact {
+  displayLabel: string;
+  displayValue: string;
+}
+
+interface ItemCardDisplayModel {
+  primary: DisplayItemFact[];
+  secondary: DisplayItemFact[];
+  meta: DisplayItemFact[];
+  bonuses: DisplayItemFact[];
+  protections: DisplayItemFact[];
+}
 
 @Component({
   selector: 'app-item-card',
@@ -17,53 +31,8 @@ export class ItemCardComponent {
   private readonly transloco = inject(TranslocoService);
   private readonly activeLang = this.transloco.activeLang;
 
-  statRows(item: TibiaItem): string[] {
-    const lang = this.activeLang();
-    const rows = [
-      `${this.translate('itemCard.level', lang)}: ${item.level ?? this.translate('itemCard.unrestricted', lang)}`,
-      `${this.translate('itemCard.weight', lang)}: ${item.weight} oz`,
-      `${this.translate('itemCard.imbuementSlots', lang)}: ${item.imbuementSlots}`
-    ];
-
-    if (item.classification !== null) {
-      rows.push(`${this.translate('itemCard.classification', lang)}: ${item.classification}`);
-    }
-
-    if (item.maxTier !== null) {
-      rows.push(`${this.translate('itemCard.maxTier', lang)}: ${item.maxTier}`);
-    }
-
-    if (item.kind === 'armor') {
-      rows.push(item.armor.slot);
-      this.pushNumber(rows, 'itemCard.armor', item.armor.arm, lang);
-      this.pushNumber(rows, 'itemCard.defense', item.armor.def, lang);
-    }
-
-    if (item.kind === 'weapon') {
-      rows.push(item.weapon.group);
-      this.pushNumber(rows, 'itemCard.attack', item.weapon.attack, lang);
-      this.pushNumber(rows, 'itemCard.defense', item.weapon.defense, lang);
-      this.pushNumber(rows, 'itemCard.range', item.weapon.range, lang);
-    }
-
-    if (item.kind === 'quiver') {
-      rows.push(`${this.translate('itemCard.slots', lang)}: ${item.quiver.volume}`, item.quiver.acceptedAmmoTypes.join('/'));
-    }
-
-    if (item.kind === 'extra-slot') {
-      rows.push(item.extraSlot.subtype);
-      this.pushNumber(rows, 'itemCard.attack', item.extraSlot.attack ?? null, lang);
-    }
-
-    return rows;
-  }
-
-  bonusEntries(item: TibiaItem): Array<[string, number]> {
-    return Object.entries(item.bonuses).filter((entry): entry is [SkillBonus, number] => entry[1] !== undefined);
-  }
-
-  protectionEntries(item: TibiaItem): Array<[string, number]> {
-    return Object.entries(item.protections).filter((entry): entry is [Element, number] => entry[1] !== undefined);
+  cardModel(item: TibiaItem): ItemCardDisplayModel {
+    return this.toDisplayModel(buildRankedItemCardModel(item));
   }
 
   vocationText(item: TibiaItem): string {
@@ -73,10 +42,26 @@ export class ItemCardComponent {
       : item.vocations.join(', ');
   }
 
-  private pushNumber(rows: string[], labelKey: string, value: number | null, lang: string): void {
-    if (value !== null) {
-      rows.push(`${this.translate(labelKey, lang)}: ${value}`);
-    }
+  secondaryText(fact: DisplayItemFact): string {
+    return fact.displayLabel === fact.key ? fact.displayValue : `${fact.displayLabel} ${fact.displayValue}`;
+  }
+
+  private toDisplayModel(model: RankedItemCardModel): ItemCardDisplayModel {
+    return {
+      primary: model.primary.map((fact) => this.toDisplayFact(fact)),
+      secondary: model.secondary.map((fact) => this.toDisplayFact(fact)),
+      meta: model.meta.map((fact) => this.toDisplayFact(fact)),
+      bonuses: model.bonuses.map((fact) => this.toDisplayFact(fact)),
+      protections: model.protections.map((fact) => this.toDisplayFact(fact))
+    };
+  }
+
+  private toDisplayFact(fact: RankedItemFact): DisplayItemFact {
+    const lang = this.activeLang();
+    const displayLabel = fact.labelKey === null ? fact.label ?? fact.key : this.translate(fact.labelKey, lang);
+    const displayValue = fact.value.startsWith('itemCard.') ? this.translate(fact.value, lang) : fact.value;
+
+    return { ...fact, displayLabel, displayValue };
   }
 
   private translate(key: string, lang: string): string {
