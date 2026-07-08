@@ -62,6 +62,34 @@ describe('buildRankedItemCardModel', () => {
     expect(model.secondary.map((fact) => fact.key)).toEqual(['weaponGroup', 'hands', 'damageType']);
   });
 
+  it('prioritizes ranged weapon attack, hit percent, and range', () => {
+    const item = {
+      ...baseItem,
+      kind: 'weapon',
+      weapon: {
+        group: 'Bow',
+        hands: 'TwoHanded',
+        attack: 7,
+        defense: null,
+        defenseModifier: null,
+        range: 6,
+        hitPercent: 6,
+        damageType: 'Physical',
+        requiredAmmoType: 'Arrow',
+        consumesAmmo: true
+      }
+    } satisfies TibiaItem;
+
+    const model = buildRankedItemCardModel(item);
+
+    expect(model.primary.map((fact) => fact.key)).toEqual(['attack', 'hitPercent', 'range']);
+    expect(model.primary).toEqual([
+      expect.objectContaining({ label: 'Attack', value: '7', icon: 'flash_on' }),
+      expect.objectContaining({ label: 'Hit', value: '+6%', icon: 'ads_click' }),
+      expect.objectContaining({ label: 'Range', value: '6', icon: 'track_changes' })
+    ]);
+  });
+
   it('prioritizes elemental weapon damage when physical attack is absent', () => {
     const item = {
       ...baseItem,
