@@ -111,4 +111,53 @@ describe('ItemCardComponent', () => {
     expect(element.querySelector('.primary-stat-grid')).toBeNull();
     expect(element.querySelector('.secondary-chip')?.textContent).toContain('Trinket');
   });
+
+  it('renders bottom external links to TibiaWiki and Tibia Fandom', async () => {
+    fixture.componentRef.setInput('item', {
+      id: 'amber-greataxe',
+      name: 'Amber Greataxe',
+      kind: 'weapon',
+      level: 330,
+      vocations: ['Knight'],
+      weight: 59,
+      marketable: true,
+      imbuementSlots: 2,
+      classification: 4,
+      maxTier: null,
+      bonuses: { Axe: 3 },
+      protections: {},
+      specialEffects: [],
+      dropsFrom: { normal: [], boss: [], invasion: [], quest: [], other: [] },
+      sources: { primary: 'manual', urls: {}, confidence: 'high' },
+      assets: { imagePath: '' },
+      metadata: { tags: [], dataQuality: 'complete' },
+      weapon: {
+        group: 'Axe',
+        hands: 'TwoHanded',
+        attack: null,
+        defense: 34,
+        defenseModifier: null,
+        range: null,
+        hitPercent: null,
+        damageType: 'Earth',
+        elementDamage: { Earth: 50 },
+        consumesAmmo: false
+      }
+    } satisfies TibiaItem);
+
+    fixture.detectChanges();
+    await fixture.whenStable();
+    fixture.detectChanges();
+
+    const element: HTMLElement = fixture.nativeElement;
+    const links = [...element.querySelectorAll<HTMLAnchorElement>('.external-link')];
+
+    expect(links.map((link) => link.getAttribute('aria-label'))).toEqual(['Open on TibiaWiki', 'Open on Tibia Fandom']);
+    expect(links.map((link) => link.href)).toEqual([
+      'https://www.tibiawiki.com.br/wiki/Amber_Greataxe',
+      'https://tibia.fandom.com/wiki/Amber_Greataxe'
+    ]);
+    expect(links.every((link) => link.target === '_blank')).toBe(true);
+    expect(links.every((link) => link.rel === 'noopener noreferrer')).toBe(true);
+  });
 });
