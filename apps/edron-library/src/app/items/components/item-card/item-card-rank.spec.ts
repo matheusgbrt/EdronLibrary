@@ -1,0 +1,130 @@
+import { buildRankedItemCardModel } from './item-card-rank';
+import { TibiaItem } from '../../models';
+
+const baseItem = {
+  id: 'sample',
+  name: 'Sample Item',
+  level: 400,
+  vocations: ['Knight'],
+  weight: 12,
+  marketable: true,
+  imbuementSlots: 2,
+  classification: 4,
+  maxTier: null,
+  bonuses: {},
+  protections: {},
+  specialEffects: [],
+  dropsFrom: { normal: [], boss: [], invasion: [], quest: [], other: [] },
+  sources: { primary: 'manual', urls: {}, confidence: 'high' },
+  assets: { imagePath: '' },
+  metadata: { tags: [], dataQuality: 'complete' }
+} satisfies Omit<TibiaItem, 'kind'>;
+
+describe('buildRankedItemCardModel', () => {
+  it('prioritizes armor before metadata for helmets', () => {
+    const item = {
+      ...baseItem,
+      kind: 'armor',
+      armor: { slot: 'Helmet', arm: 11, def: null, twoHanded: false }
+    } satisfies TibiaItem;
+
+    const model = buildRankedItemCardModel(item);
+
+    expect(model.primary[0]).toEqual(
+      expect.objectContaining({ key: 'armor', labelKey: 'itemCard.armor', value: '11', icon: 'security' })
+    );
+    expect(model.secondary).toEqual([expect.objectContaining({ key: 'slot', value: 'Helmet', icon: 'checkroom' })]);
+    expect(model.meta.map((fact) => fact.key)).toEqual(['level', 'weight', 'imbuementSlots', 'classification']);
+  });
+
+  it('prioritizes weapon attack, defense, and range when present', () => {
+    const item = {
+      ...baseItem,
+      kind: 'weapon',
+      weapon: {
+        group: 'Bow',
+        hands: 'TwoHanded',
+        attack: 7,
+        defense: 2,
+        defenseModifier: null,
+        range: 6,
+        hitPercent: null,
+        damageType: 'Physical',
+        consumesAmmo: true
+      }
+    } satisfies TibiaItem;
+
+    const model = buildRankedItemCardModel(item);
+
+    expect(model.primary.map((fact) => fact.key)).toEqual(['attack', 'defense', 'range']);
+    expect(model.secondary.map((fact) => fact.key)).toEqual(['weaponGroup', 'hands', 'damageType']);
+  });
+
+  it('prioritizes quiver volume and ammo types', () => {
+    const item = {
+      ...baseItem,
+      kind: 'quiver',
+      quiver: {
+        volume: 25,
+        acceptedAmmoTypes: ['Arrow', 'Bolt'],
+        equipSlots: ['ShieldHand'],
+        canUseWithTwoHandedDistanceWeapon: true,
+        containerOnlyForAmmunition: true
+      }
+    } satisfies TibiaItem;
+
+    const model = buildRankedItemCardModel(item);
+
+    expect(model.primary).toEqual([
+      expect.objectContaining({ key: 'slots', value: '25', icon: 'inventory_2' }),
+      expect.objectContaining({ key: 'ammoTypes', value: 'Arrow/Bolt', icon: 'adjust' })
+    ]);
+  });
+
+  it('prioritizes extra-slot subtype and attack', () => {
+    const item = {
+      ...baseItem,
+      kind: 'extra-slot',
+      extraSlot: {
+        subtype: 'Other',
+        providesLight: false,
+        attack: 3,
+        consumable: false
+      }
+    } satisfies TibiaItem;
+
+    const model = buildRankedItemCardModel(item);
+
+    expect(model.primary.map((fact) => fact.key)).toEqual(['subtype', 'attack']);
+  });
+
+  it('sorts bonuses and protections by value descending then alphabetically', () => {
+    const item = {
+      ...baseItem,
+      kind: 'armor',
+      armor: { slot: 'Armor', arm: 12, def: null, twoHanded: false },
+      bonuses: { Sword: 1, Axe: 3, Club: 3 },
+      protections: { Fire: 5, Earth: 7, Ice: 7 }
+    } satisfies TibiaItem;
+
+    const model = buildRankedItemCardModel(item);
+
+    expect(model.bonuses.map((fact) => fact.key)).toEqual(['Axe', 'Club', 'Sword']);
+    expect(model.protections.map((fact) => fact.key)).toEqual(['Earth', 'Ice', 'Fire']);
+  });
+
+  it('omits missing optional values from ranked facts', () => {
+    const item = {
+      ...baseItem,
+      kind: 'armor',
+      classification: null,
+      maxTier: null,
+      armor: { slot: 'Shield', arm: null, def: null, twoHanded: false }
+    } satisfies TibiaItem;
+
+    const model = buildRankedItemCardModel(item);
+
+    expect(model.primary).toEqual([expect.objectContaining({ key: 'slot', value: 'Shield' })]);
+    expect(model.meta.map((fact) => fact.key)).toEqual(['level', 'weight', 'imbuementSlots']);
+  });
+});
