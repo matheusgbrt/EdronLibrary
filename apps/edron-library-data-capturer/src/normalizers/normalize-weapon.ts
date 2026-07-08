@@ -32,6 +32,7 @@ const IMBUEMENT_KEYS = ['imbueslots', 'imbuements', 'imbuement slots', 'slots'];
 const CLASSIFICATION_KEYS = ['classification', 'tier', 'class', 'upgradeclass'];
 const MAX_TIER_KEYS = ['maxtier', 'max tier'];
 const ATTACK_KEYS = ['attack', 'atk', 'attackvalue'];
+const RANGED_ATTACK_MODIFIER_KEYS = ['atk_mod'];
 const DEFENSE_KEYS = ['defense', 'def'];
 const DEFENSE_MODIFIER_KEYS = ['defensemod', 'defense modifier', 'defense_mod', 'def_mod', 'atk_mod'];
 const RANGE_KEYS = ['range'];
@@ -174,6 +175,10 @@ function inferConsumesAmmo(group: NonNullable<CaptureCategory['weaponGroup']>): 
   return group === 'Bow' || group === 'Crossbow' || group === 'Throwing';
 }
 
+function isRangedAttackModifierGroup(group: NonNullable<CaptureCategory['weaponGroup']>): boolean {
+  return group === 'Bow' || group === 'Crossbow' || group === 'Throwing';
+}
+
 function inferWeaponDataQuality(item: WeaponItem, hasTemplate: boolean): WeaponItem['metadata']['dataQuality'] {
   const criticalMissing =
     !hasTemplate ||
@@ -208,6 +213,14 @@ export function normalizeWeaponItem(
   const imagePath =
     DOWNLOAD_IMAGES && imageExtension ? `/assets/images/items/${id}.${imageExtension}` : '';
   const damageInfo = inferWeaponDamageType(raw.rawFields);
+  const attack =
+    parseInteger(getField(raw.rawFields, ATTACK_KEYS)) ??
+    (isRangedAttackModifierGroup(group)
+      ? parseInteger(getField(raw.rawFields, RANGED_ATTACK_MODIFIER_KEYS))
+      : null);
+  const defenseModifier = isRangedAttackModifierGroup(group)
+    ? null
+    : parseInteger(getField(raw.rawFields, DEFENSE_MODIFIER_KEYS));
 
   const item: WeaponItem = {
     id,
@@ -244,9 +257,9 @@ export function normalizeWeaponItem(
     weapon: {
       group,
       hands: parseHands(getField(raw.rawFields, ['hands'])),
-      attack: parseInteger(getField(raw.rawFields, ATTACK_KEYS)),
+      attack,
       defense: parseInteger(getField(raw.rawFields, DEFENSE_KEYS)),
-      defenseModifier: parseInteger(getField(raw.rawFields, DEFENSE_MODIFIER_KEYS)),
+      defenseModifier,
       range: parseInteger(getField(raw.rawFields, RANGE_KEYS)),
       hitPercent: parseNullableNumber(getField(raw.rawFields, HIT_PERCENT_KEYS)),
       damageType: damageInfo.damageType,

@@ -38,6 +38,7 @@ export function buildRankedItemCardModel(item: TibiaItem): RankedItemCardModel {
     pushNumber(primary, 'attack', 'Attack', item.weapon.attack, 'flash_on', 'primary');
     primary.push(...buildElementDamageFacts(item.weapon.elementDamage));
     pushNumber(primary, 'armor', 'Armor', item.weapon.defense, 'security', 'primary');
+    pushSignedPercent(primary, 'hitPercent', 'Hit', item.weapon.hitPercent, 'ads_click', 'primary');
     pushNumber(primary, 'range', 'Range', item.weapon.range, 'track_changes', 'primary');
 
     secondary.push(rawFact('weaponGroup', null, item.weapon.group, 'category', 'secondary'));
@@ -160,6 +161,20 @@ function pushNumber(
 ): void {
   if (value !== null) {
     facts.push(numberFact(key, label, value, icon, tone));
+  }
+}
+
+function pushSignedPercent(
+  facts: RankedItemFact[],
+  key: string,
+  label: string,
+  value: number | null,
+  icon: string,
+  tone: RankedFactTone
+): void {
+  if (value !== null) {
+    const sign = value > 0 ? '+' : '';
+    facts.push(rawFact(key, label, `${sign}${value}%`, icon, tone));
   }
 }
 

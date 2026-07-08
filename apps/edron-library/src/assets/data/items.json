@@ -70676,14 +70676,14 @@
           "amber",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 7,
         "defense": null,
-        "defenseModifier": 7,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -70811,14 +70811,14 @@
           "of",
           "carving"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -70873,14 +70873,14 @@
           "carving",
           "charged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 4,
         "defense": null,
-        "defenseModifier": 4,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 4,
         "damageType": "Physical",
@@ -70936,14 +70936,14 @@
           "heavily",
           "charged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 5,
         "defense": null,
-        "defenseModifier": 5,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -71000,14 +71000,14 @@
           "carving",
           "overcharged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -71067,14 +71067,14 @@
           "of",
           "cataclysm"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 4,
         "damageType": "Physical",
@@ -71128,14 +71128,14 @@
           "of",
           "destruction"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 5,
         "defense": null,
-        "defenseModifier": 5,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -71251,14 +71251,14 @@
           "of",
           "mayhem"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -71313,14 +71313,14 @@
           "mayhem",
           "charged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 4,
         "defense": null,
-        "defenseModifier": 4,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 4,
         "damageType": "Physical",
@@ -71376,14 +71376,14 @@
           "heavily",
           "charged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 5,
         "defense": null,
-        "defenseModifier": 5,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -71440,14 +71440,14 @@
           "mayhem",
           "overcharged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -71501,14 +71501,14 @@
           "of",
           "remedy"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -71563,14 +71563,14 @@
           "remedy",
           "charged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 4,
         "defense": null,
-        "defenseModifier": 4,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 4,
         "damageType": "Physical",
@@ -71626,14 +71626,14 @@
           "heavily",
           "charged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 5,
         "defense": null,
-        "defenseModifier": 5,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -71690,14 +71690,14 @@
           "remedy",
           "overcharged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -71761,14 +71761,14 @@
           "composite",
           "hornbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 2,
         "defense": null,
-        "defenseModifier": 2,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 2,
         "damageType": "Physical",
@@ -71824,14 +71824,14 @@
           "umbral",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 2,
         "defense": null,
-        "defenseModifier": 2,
+        "defenseModifier": null,
         "range": 7,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -71888,14 +71888,14 @@
           "crypt",
           "spine"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 8,
         "defense": null,
-        "defenseModifier": 8,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -71953,14 +71953,14 @@
           "inferniarch",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 7,
         "defense": null,
-        "defenseModifier": 7,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -72018,14 +72018,14 @@
           "eldritch",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -72080,14 +72080,14 @@
           "elemental",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 7,
         "defense": null,
-        "defenseModifier": 7,
+        "defenseModifier": null,
         "range": 4,
         "hitPercent": null,
         "damageType": "Physical",
@@ -72217,14 +72217,14 @@
           "falcon",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -72283,14 +72283,14 @@
           "eldritch",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -72348,14 +72348,14 @@
           "sanguine",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 9,
         "defense": null,
-        "defenseModifier": 9,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -72412,14 +72412,14 @@
           "hive",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 2,
         "defense": null,
-        "defenseModifier": 2,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -72475,14 +72475,14 @@
           "icicle",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 1,
         "defense": null,
-        "defenseModifier": 1,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 4,
         "damageType": "Physical",
@@ -72541,14 +72541,14 @@
           "inferniarch",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -72607,14 +72607,14 @@
           "jungle",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -72674,14 +72674,14 @@
           "lion",
           "longbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -72741,14 +72741,14 @@
           "vine",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 5,
         "defense": null,
-        "defenseModifier": 5,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -72805,14 +72805,14 @@
           "moonsilver",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 10,
         "defense": null,
-        "defenseModifier": 10,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 7,
         "damageType": "Physical",
@@ -72935,14 +72935,14 @@
           "mycological",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 4,
         "defense": null,
-        "defenseModifier": 4,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 4,
         "damageType": "Physical",
@@ -73428,14 +73428,14 @@
           "inferniarch",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 7,
         "defense": null,
-        "defenseModifier": 7,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -73496,14 +73496,14 @@
           "rift",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 5,
         "defense": null,
-        "defenseModifier": 5,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 3,
         "damageType": "Physical",
@@ -73560,14 +73560,14 @@
           "sanguine",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 9,
         "defense": null,
-        "defenseModifier": 9,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -73620,14 +73620,14 @@
           "shimmer",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 1,
         "defense": null,
-        "defenseModifier": 1,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 7,
         "damageType": "Physical",
@@ -73750,14 +73750,14 @@
           "inferniarch",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 7,
         "defense": null,
-        "defenseModifier": 7,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -73813,14 +73813,14 @@
           "bow",
           "soulbleeder"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 8,
         "defense": null,
-        "defenseModifier": 8,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -73878,14 +73878,14 @@
           "moonsilver",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 10,
         "defense": null,
-        "defenseModifier": 10,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 7,
         "damageType": "Physical",
@@ -73940,14 +73940,14 @@
           "umbral",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 4,
         "defense": null,
-        "defenseModifier": 4,
+        "defenseModifier": null,
         "range": 7,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -74005,14 +74005,14 @@
           "master",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 7,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -74310,14 +74310,14 @@
           "warsinger",
           "bow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Bow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 3,
         "defense": null,
-        "defenseModifier": 3,
+        "defenseModifier": null,
         "range": 7,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -74435,14 +74435,14 @@
           "amber",
           "crossbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 8,
         "defense": null,
-        "defenseModifier": 8,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 7,
         "damageType": "Physical",
@@ -74496,14 +74496,14 @@
           "crossbow",
           "arbalest"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 2,
         "defense": null,
-        "defenseModifier": 2,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 2,
         "damageType": "Physical",
@@ -74558,14 +74558,14 @@
           "chain",
           "bolter"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 4,
         "defense": null,
-        "defenseModifier": 4,
+        "defenseModifier": null,
         "range": 3,
         "hitPercent": null,
         "damageType": "Physical",
@@ -74624,14 +74624,14 @@
           "cobra",
           "crossbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 7,
         "defense": null,
-        "defenseModifier": 7,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -74759,14 +74759,14 @@
           "of",
           "carving"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -74821,14 +74821,14 @@
           "carving",
           "charged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 4,
         "defense": null,
-        "defenseModifier": 4,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 4,
         "damageType": "Physical",
@@ -74884,14 +74884,14 @@
           "heavily",
           "charged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 5,
         "defense": null,
-        "defenseModifier": 5,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -74948,14 +74948,14 @@
           "carving",
           "overcharged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -75009,14 +75009,14 @@
           "of",
           "destruction"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -75070,14 +75070,14 @@
           "of",
           "mayhem"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -75132,14 +75132,14 @@
           "mayhem",
           "charged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 4,
         "defense": null,
-        "defenseModifier": 4,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 4,
         "damageType": "Physical",
@@ -75195,14 +75195,14 @@
           "heavily",
           "charged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 5,
         "defense": null,
-        "defenseModifier": 5,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -75259,14 +75259,14 @@
           "mayhem",
           "overcharged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -75320,14 +75320,14 @@
           "of",
           "remedy"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -75382,14 +75382,14 @@
           "remedy",
           "charged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 4,
         "defense": null,
-        "defenseModifier": 4,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 4,
         "damageType": "Physical",
@@ -75445,14 +75445,14 @@
           "heavily",
           "charged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 5,
         "defense": null,
-        "defenseModifier": 5,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 5,
         "damageType": "Physical",
@@ -75509,14 +75509,14 @@
           "remedy",
           "overcharged"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -75572,14 +75572,14 @@
           "umbral",
           "crossbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 3,
         "defense": null,
-        "defenseModifier": 3,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 1,
         "damageType": "Physical",
@@ -75649,14 +75649,14 @@
           "crystal",
           "crossbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 4,
         "defense": null,
-        "defenseModifier": 4,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 3,
         "damageType": "Physical",
@@ -75714,14 +75714,14 @@
           "inferniarch",
           "arbalest"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 8,
         "defense": null,
-        "defenseModifier": 8,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -75779,14 +75779,14 @@
           "sanguine",
           "crossbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 10,
         "defense": null,
-        "defenseModifier": 10,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 7,
         "damageType": "Physical",
@@ -75845,14 +75845,14 @@
           "inferniarch",
           "arbalest"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 7,
         "defense": null,
-        "defenseModifier": 7,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -75971,14 +75971,14 @@
           "moonsilver",
           "crossbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 11,
         "defense": null,
-        "defenseModifier": 11,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 8,
         "damageType": "Physical",
@@ -76037,14 +76037,14 @@
           "naga",
           "crossbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 8,
         "defense": null,
-        "defenseModifier": 8,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -76177,14 +76177,14 @@
           "ornate",
           "crossbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 1,
         "defense": null,
-        "defenseModifier": 1,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 2,
         "damageType": "Physical",
@@ -76547,14 +76547,14 @@
           "inferniarch",
           "arbalest"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 8,
         "defense": null,
-        "defenseModifier": 8,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -76617,14 +76617,14 @@
           "rift",
           "crossbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 5,
         "defense": null,
-        "defenseModifier": 5,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 3,
         "damageType": "Physical",
@@ -76679,14 +76679,14 @@
           "royal",
           "crossbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 5,
         "defense": null,
-        "defenseModifier": 5,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 3,
         "damageType": "Physical",
@@ -76743,14 +76743,14 @@
           "sanguine",
           "crossbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 10,
         "defense": null,
-        "defenseModifier": 10,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 7,
         "damageType": "Physical",
@@ -76808,14 +76808,14 @@
           "inferniarch",
           "arbalest"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 8,
         "defense": null,
-        "defenseModifier": 8,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -76871,14 +76871,14 @@
           "crossbow",
           "soulpiercer"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 9,
         "defense": null,
-        "defenseModifier": 9,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 6,
         "damageType": "Physical",
@@ -76936,14 +76936,14 @@
           "moonsilver",
           "crossbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 11,
         "defense": null,
-        "defenseModifier": 11,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 8,
         "damageType": "Physical",
@@ -76998,14 +76998,14 @@
           "the",
           "devileye"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 20,
         "defense": null,
-        "defenseModifier": 20,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": -20,
         "damageType": "Physical",
@@ -77061,14 +77061,14 @@
           "the",
           "ironworker"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 4,
         "defense": null,
-        "defenseModifier": 4,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": null,
         "damageType": "Physical",
@@ -77121,14 +77121,14 @@
           "thorn",
           "spitter"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 9,
         "defense": null,
-        "defenseModifier": 9,
+        "defenseModifier": null,
         "range": 6,
         "hitPercent": 1,
         "damageType": "Physical",
@@ -77184,14 +77184,14 @@
           "bolt",
           "crossbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 3,
         "defense": null,
-        "defenseModifier": 3,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 2,
         "damageType": "Physical",
@@ -77246,14 +77246,14 @@
           "umbral",
           "crossbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 6,
         "defense": null,
-        "defenseModifier": 6,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 2,
         "damageType": "Physical",
@@ -77311,14 +77311,14 @@
           "master",
           "crossbow"
         ],
-        "dataQuality": "needs-review"
+        "dataQuality": "complete"
       },
       "weapon": {
         "group": "Crossbow",
         "hands": "TwoHanded",
-        "attack": null,
+        "attack": 9,
         "defense": null,
-        "defenseModifier": 9,
+        "defenseModifier": null,
         "range": 5,
         "hitPercent": 4,
         "damageType": "Physical",
