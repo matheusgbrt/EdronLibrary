@@ -1,409 +1,240 @@
-# Tibia Item Browser Spec
+# Edron Library Item Browser Spec
 
 ## Purpose
 
-This repository now contains an Angular-based Tibia item browser page intended to behave like a dense game marketplace or item listing interface.
+Edron Library is a client-side Tibia item browser built to make equipment comparison practical. The public wiki and fandom pages contain the item facts, but they are not designed for ranking, filtering, or comparing large sets of equipment by a player's priorities.
 
-The current implementation is a client-side-only first version:
+The browser turns normalized item data into a dense comparison interface for armor, weapons, quivers, and extra-slot items.
 
-- Angular application
-- Angular Material for drawers, toolbar, buttons, form controls, icons, menus, and paginator
-- Tailwind CSS for layout, spacing, density, dark styling, borders, and responsive behavior
-- Transloco for runtime UI i18n
-- Angular Signals for local browser state
-- Static JSON item data loaded through `HttpClient`
-- No backend
-- No NgRx
-- No Bootstrap
-- No Angular Material table
-- No AG Grid
+## Current Scope
 
-## Scope Implemented
+The implemented frontend includes:
 
-The following deliverables were implemented:
+- Angular standalone application.
+- English-only interface.
+- Angular Material drawers, toolbar, form controls, paginator, icons, and buttons.
+- Tailwind CSS and focused SCSS for dense dark UI styling.
+- Signal-based browser state.
+- Static JSON item data loaded from `src/assets/data/items.json`.
+- Category sidebar.
+- Shared right-side utility drawer for filters and sorting.
+- Card grid with type-aware item cards.
+- Live filtering.
+- Ordered multi-sort.
+- Pagination over filtered and sorted results.
+- External item links to TibiaWiki and Tibia Fandom.
+- Public site metadata, icons, manifest, robots, and sitemap for `https://edronlibrary.com/`.
 
-1. Item browser page shell
-2. Persistent left category sidebar
-3. Right-side filter drawer
-4. Card-based item grid
-5. Dense item card component
-6. Signal-based item browser state service
-7. Filter service and sort service
-8. Paginator wired to filtered and sorted state
-9. Static JSON item data loading from assets
-10. Small, focused standalone components
-11. Runtime i18n for generic UI chrome only
+Non-goals for the current app:
 
-## Page Layout Rules
+- No backend.
+- No user accounts.
+- No runtime translations.
+- No server-side rendering.
+- No Angular Material table or AG Grid.
+- No item recommendation score.
 
-The page is built around Angular Material drawers:
+## Application Shell
 
-- Left drawer: category sidebar
-- Right drawer: filter drawer
-- Center content: toolbar plus scrollable card grid
+Primary files:
 
-Layout rules:
-
-- Full-screen dark page shell
-- Desktop keeps the category sidebar visible as a side drawer
-- Mobile and smaller screens switch the category sidebar to overlay behavior
-- Filter drawer always opens as an overlay from the right
-- Main content scrolls independently inside `mat-drawer-content`
-- The toolbar remains at the top of the content column
-- Item results render as cards inside a CSS grid
-
-Primary shell component:
-
+- `src/app/app.routes.ts`
+- `src/app/app.html`
+- `src/app/app.config.ts`
 - `src/app/items/pages/item-browser-page/item-browser-page.component.*`
-
-## Routing and App Bootstrap
-
-The Angular starter shell was replaced with the item browser route.
-
-Current app entry behavior:
-
-- `src/app/app.routes.ts` routes `''` to `ItemBrowserPageComponent`
-- `src/app/app.html` now renders only `<router-outlet />`
-- `src/app/app.config.ts` provides `HttpClient` so asset data can be loaded
-- `src/app/app.ts` initializes persisted language selection at startup
-
-## I18n Rules
-
-The repository now includes runtime i18n through Transloco.
-
-Files:
-
-- `src/app/core/i18n/transloco-loader.ts`
-- `src/app/core/i18n/transloco.config.ts`
-- `src/app/core/i18n/language.service.ts`
-- `src/app/core/i18n/transloco-paginator-intl.ts`
-- `src/app/core/i18n/language-switcher/*`
-- `src/assets/i18n/en.json`
-- `src/assets/i18n/pt-BR.json`
-
-Current language support:
-
-- `en`
-- `pt-BR`
-
-Spanish is intentionally not included.
-
-Language persistence rules:
-
-- Storage key: `app.language`
-- Default language: `en`
-- Invalid saved language values fall back to `en`
-- Switching language does not reload the page
-- Visible UI updates immediately on language change
-
-Critical translation boundary:
-
-- Only generic application UI text is translated
-- Tibia canonical values are never translated
-- No translation keys are built from item kinds, vocations, skills, elements, armor slots, weapon groups, extra-slot subtypes, item names, or drop/source names
-- Item JSON shape remains unchanged
-
-Translated UI areas:
-
-- Toolbar chrome
-- Filter drawer chrome
-- Generic filter labels
-- Result count
-- Empty/loading/error states
-- Item-card section labels
-- Paginator labels
-
-Non-translated Tibia/domain areas:
-
-- Item names
-- Creature, boss, quest, and source names
-- Vocation names
-- Skill names
-- Element names
-- Item kind values
-- Armor slot values
-- Weapon group values
-- Extra-slot subtype values
-
-## Visual Direction
-
-The implemented UI follows the requested dark fantasy/game data browser direction:
-
-- Page background uses near-black zinc styling
-- Panels and cards use darker zinc surfaces
-- Borders are subtle and compact
-- Accent color uses violet/purple selectively
-- Item cards are dense and information-heavy rather than large or decorative
-- Hover states slightly brighten borders and surfaces
-
-Styling split:
-
-- Angular Material supplies component primitives and accessibility behavior
-- Tailwind supplies layout, spacing, sizing, responsive rules, and utility-driven styling
-- Component SCSS handles custom card styling and a few focused overrides
-
-Theme files:
-
-- `src/material-theme.scss`
-- `src/styles.css`
-
-## Folder Structure
-
-The item browser feature was added under `src/app/items/` using this structure:
-
-```text
-src/app/items/
-  components/
-    chip-toggle-filter/
-    filter-section/
-    item-browser-toolbar/
-    item-card/
-    item-card-grid/
-    item-category-sidebar/
-    item-filter-drawer/
-    number-range-filter/
-  models/
-  pages/
-    item-browser-page/
-  services/
-    item-browser-state.service.ts
-    item-data.service.ts
-    item-filter.service.ts
-    item-sort.service.ts
-```
-
-## Standalone Component Rules
-
-All feature components are implemented as standalone Angular components.
-
-Shared component rules:
-
-- Use `ChangeDetectionStrategy.OnPush`
-- Keep filtering and sorting logic out of view components
-- Use state service methods for mutations
-- Use focused inputs and outputs for reusable filter controls
-
-## Components Implemented
-
-### Item Browser Page
-
-File:
-
-- `src/app/items/pages/item-browser-page/item-browser-page.component.ts`
-
-Responsibilities:
-
-- Hosts the drawer container
-- Loads data on init
-- Adapts left drawer mode for mobile vs desktop with `BreakpointObserver`
-- Coordinates mobile category drawer open and close state
-
-### Item Browser Toolbar
-
-Files:
-
-- `src/app/items/components/item-browser-toolbar/*`
-
-Responsibilities:
-
-- Filter button
-- Mobile category button
-- Sort menu
-- Current visible result range
-- Desktop paginator
 
 Rules:
 
-- Filter click emits an output
-- Category click emits an output
-- Sort changes call the browser state service
-- Desktop keeps paginator inside the toolbar
+- The root route renders `ItemBrowserPageComponent`.
+- The app shell renders only the router outlet.
+- `HttpClient` is provided for loading static asset data.
+- The main browser page uses `mat-drawer-container`.
+- The left category drawer is persistent on desktop and overlay on smaller screens.
+- The right drawer is a shared overlay utility drawer.
+- The shared right drawer displays either filters or sorting based on the toolbar action.
+- The main content column contains the toolbar and a scrollable card grid.
 
-### Item Category Sidebar
+## Language Policy
 
-Files:
+The app is English-only.
 
-- `src/app/items/components/item-category-sidebar/*`
+Rules:
 
-Responsibilities:
+- No runtime i18n framework is present.
+- No translation keys are used.
+- Tibia domain values are displayed as canonical data values.
+- Item names, vocations, skills, elements, armor slots, weapon groups, extra-slot subtypes, drop sources, and wiki names are not translated.
 
-- Displays grouped categories
-- Applies category filters through the shared state service
-- Reflects selected category visually
+## Visual Style
 
-Category groups implemented:
+The UI is designed as a dense operational browser, not a marketing page.
 
-- Armor
-  - Helmets
-  - Armors
-  - Legs
-  - Boots
-  - Shields
-  - Spellbooks
-- Weapons
-  - Swords
-  - Axes
-  - Clubs
-  - Bows
-  - Crossbows
-  - Wands
-  - Rods
-  - Throwing
-  - Ammunition
-- Extra Slot
-  - Quivers
-  - Trinkets
-  - Light Sources
-  - Tools
-  - Others
+Rules:
 
-Implementation detail:
+- Dark zinc/charcoal surfaces.
+- Compact spacing.
+- Clear information hierarchy.
+- Cards stay scan-friendly at desktop grid density.
+- Controls should be useful first, decorative second.
+- Icons are used for actions, stat facts, external links, and compact cues.
+- Cards and drawers should avoid nested-card visual clutter.
 
-- Sidebar categories do not navigate to separate routes
-- Sidebar selection mutates browser filters in-place
+## Data Loading
 
-### Item Filter Drawer
+Frontend item data is loaded from:
 
-Files:
+```text
+src/assets/data/items.json
+```
 
-- `src/app/items/components/item-filter-drawer/*`
+The dataset is generated by the data-capturer project and copied into the frontend asset folder. The frontend treats this file as read-only static data.
 
-Responsibilities:
+Primary service:
 
-- Hosts the filter UI inside the right overlay drawer
-- Supports live filtering
-- Exposes a close output for the parent drawer
-- Exposes clear-all action
+- `src/app/items/services/item-data.service.ts`
 
-Filter sections implemented:
+Rules:
 
-- Search
-- Item type
-- Vocation
-- Level range
-- Armor slot
-- Weapon group
-- Extra slot
-- Skill bonuses
-- Protections
-- Imbuements and class
-- Weight
-- Drops from
+- Data loads once into `ItemBrowserStateService`.
+- Loading state and load error are stored in browser state.
+- Filtering, sorting, and pagination derive from the loaded item list.
 
-Notes:
+## Item Model
 
-- `Classification` uses `mat-select`
-- Bonus and protection thresholds use numeric input fields
-- `Drops from` is comma-separated text input
-- Filtering is live; no explicit apply button is required
+Primary model files:
 
-### Item Card Grid
+- `src/app/items/models/tibia-item.model.ts`
+- `src/app/items/models/armor-item.model.ts`
+- `src/app/items/models/weapon-item.model.ts`
+- `src/app/items/models/quiver-item.model.ts`
+- `src/app/items/models/extra-slot-item.model.ts`
 
-Files:
+Supported item kinds:
 
-- `src/app/items/components/item-card-grid/*`
+- `armor`
+- `weapon`
+- `quiver`
+- `extra-slot`
 
-Responsibilities:
+Shared item facts include:
 
-- Shows loading state
-- Shows load error state
-- Shows empty-result state
-- Renders paged items in a CSS grid
-- Shows mobile paginator below the grid
+- ID and display name.
+- Level requirement.
+- Vocations.
+- Weight.
+- Marketable flag.
+- Imbuement slots.
+- Classification.
+- Max tier.
+- Skill bonuses.
+- Protections.
+- Drops from.
+- Sources and metadata.
+- Image asset path.
 
-Grid rule:
+Kind-specific item facts include:
 
-- Cards render with CSS grid, not table layout
+- Armor slot, armor value, shield defense fallback, and two-handed flag.
+- Weapon group, hands, attack, armor/defense value, range, hit percent, damage type, elemental damage, ammo requirements, and charges.
+- Quiver volume and accepted ammo types.
+- Extra-slot subtype, light, and consumable flags.
 
-### Item Card
+## Toolbar
 
-Files:
+Primary files:
 
-- `src/app/items/components/item-card/*`
+- `src/app/items/components/item-browser-toolbar/item-browser-toolbar.component.*`
 
-Responsibilities:
+Toolbar responsibilities:
 
-- Render core item identity
-- Render vocation summary
-- Render dense stat chips
-- Render bonuses
-- Render protections
-- Adjust displayed stats based on item kind
+- Open category drawer on small screens.
+- Open filter drawer.
+- Open sort drawer.
+- Show active sort summary.
+- Host the desktop paginator.
 
-Card behavior:
+Rules:
 
-- Armor cards show slot and armor/defense where available
-- Weapon cards show group and attack/defense/range where available
-- Quiver cards show volume and ammo types
-- Extra-slot cards show subtype and optional attack
-- Missing images fall back to a Material icon
+- Filter and sort actions emit outputs to the page shell.
+- The toolbar does not own filtering or sorting state.
+- The paginator reads total count and page state from `ItemBrowserStateService`.
+- A duplicate center pager/count must not be rendered in the toolbar.
 
-### Reusable Filter Components
+## Category Sidebar
 
-Files:
+Primary files:
 
-- `src/app/items/components/filter-section/*`
-- `src/app/items/components/chip-toggle-filter/*`
-- `src/app/items/components/number-range-filter/*`
+- `src/app/items/components/item-category-sidebar/item-category-sidebar.component.*`
 
 Responsibilities:
 
-- `app-filter-section`: common titled section wrapper with divider styling
-- `app-chip-toggle-filter`: multi-select chip-like toggle group
-- `app-number-range-filter`: reusable min/max numeric range control
+- Show high-level item categories.
+- Apply category filters through shared browser state.
+- Keep category navigation fast and predictable.
 
-## State Management Spec
+Implemented groups:
 
-Primary state file:
+- All items.
+- Armor: Helmet, Armors, Legs, Boots, Shield, Spellbook.
+- Weapons: Sword, Axe, Club, Bow, Crossbow, Wand, Rod, Throwing, Ammunition.
+- Extra Slot: Quivers, Trinkets, Light Sources, Tools, Others.
 
-- `src/app/items/services/item-browser-state.service.ts`
+Rules:
 
-State is managed with Angular Signals only.
+- Category selection mutates the same filter model used by the filter drawer.
+- Category filtering resets the current page index.
 
-No NgRx or global store was introduced.
+## Filter Drawer
 
-### Primary Signals
+Primary files:
 
-- `allItems`
-- `filters`
-- `sort`
-- `pageIndex`
-- `pageSize`
-- `loading`
-- `loadError`
+- `src/app/items/components/item-filter-drawer/item-filter-drawer.component.*`
+- `src/app/items/components/multi-select-chips-filter/multi-select-chips-filter.component.*`
+- `src/app/items/components/filter-section/filter-section.component.*`
+- `src/app/items/components/number-range-filter/number-range-filter.component.*`
 
-### Derived Signals
+Responsibilities:
 
-- `filteredItems`
-- `sortedItems`
-- `totalCount`
-- `pagedItems`
-- `pageStart`
-- `pageEnd`
+- Provide live filters in the shared right-side utility drawer.
+- Keep fixed selections compact through chips inside autocomplete-style fields.
+- Expose a close action to the page shell.
 
-### Mutation Methods
+Implemented filter sections:
 
-- `loadItems()`
-- `patchFilters(partial: Partial<ItemFilters>)`
-- `resetFilters()`
-- `setSort(sort: ItemSort)`
-- `setPage(pageIndex: number, pageSize: number)`
-- `setCategoryFilter(category: CategoryFilter)`
-- `toggleVocation(vocation: Vocation)`
-- `setBonusThreshold(skill: SkillBonus, value: number | null)`
-- `setProtectionThreshold(element: Element, value: number | null)`
+- Search.
+- Item type.
+- Vocation.
+- Level range.
+- Armor slot.
+- Weapon group.
+- Extra slot type.
+- Skill bonuses.
+- Elemental damage.
+- Protections.
+- Imbuements and class.
+- Weight.
+- Drops from.
 
-### State Rules
+Fixed-selection controls:
 
-- Filter changes reset `pageIndex` to `0`
-- Sort changes reset `pageIndex` to `0`
-- Data loading runs once unless item state is empty and not already loading
-- Data loading errors set `loadError`
-- Paged items always derive from the sorted items array
+- Item type, vocation, armor slot, weapon group, and extra-slot subtype use `app-multi-select-chips-filter`.
+- Selected values render as removable chips inside one outlined field.
+- The dropdown only offers unselected values.
 
-## Filter Model Spec
+Numeric threshold controls:
 
-Filter model file:
+- Skill bonus values mean minimum required bonus.
+- Protection values mean minimum required percentage.
+- Elemental damage values mean minimum required weapon elemental damage.
+- Imbuement slots and max tier mean minimum values.
+- Classification is an exact match.
+- Empty numeric controls mean unrestricted.
+
+Filtering is live. There is no Apply button.
+
+## Filter Model
+
+Primary file:
 
 - `src/app/items/services/item-filter.service.ts`
 
@@ -426,240 +257,260 @@ export interface ItemFilters {
   minMaxTier: number | null;
   bonuses: Partial<Record<SkillBonus, number>>;
   protections: Partial<Record<Element, number>>;
+  elementalDamages: Partial<Record<Element, number>>;
   dropsFrom: string[];
 }
 ```
 
-Default filter rules:
+Filtering rules:
 
-- Empty arrays mean unrestricted
-- `null` numeric filters mean unrestricted
-- Empty query means unrestricted
-- Empty bonus/protection maps mean unrestricted
+- Query searches item name, kind, vocations, tags, bonuses, protections, drop sources, and kind-specific category values.
+- Empty arrays mean unrestricted.
+- `None` vocation means unrestricted.
+- Numeric `null` means unrestricted.
+- Category-specific filters only match their applicable item kind.
+- Skill bonus thresholds read `item.bonuses`.
+- Protection thresholds read `item.protections`.
+- Elemental damage thresholds only match weapon items and read `item.weapon.elementDamage`.
+- Drop filters match source names case-insensitively.
 
-## Filtering Behavior
+## Sort Drawer
 
-Filtering logic lives in `ItemFilterService`.
+Primary files:
 
-### Query Matching
+- `src/app/items/components/item-sort-drawer/item-sort-drawer.component.*`
+- `src/app/items/services/item-sort.service.ts`
 
-The search query currently checks these item fields:
+Responsibilities:
 
-- Item name
-- Item kind
-- Vocation names
-- Metadata tags
-- Bonus keys
-- Protection keys
-- Drop source names
-- Armor slot when applicable
-- Weapon group when applicable
-- Extra-slot subtype when applicable
-- Literal `Quiver` token for quivers
+- Provide ordered multi-sort rows inside the shared right-side utility drawer.
+- Let users add, remove, reorder, and reset sort priorities.
+- Let each row choose a field and direction.
 
-Query matching is case-insensitive and substring-based.
+Sort row controls:
 
-### Category Matching
+- Priority number.
+- Field dropdown grouped by sort category.
+- Direction dropdown.
+- Move up.
+- Move down.
+- Remove.
 
-Category filtering combines with the rest of the filter state.
+Sort groups:
 
-Current rules:
+- General.
+- Combat.
+- Elemental damage.
+- Skill bonuses.
+- Protections.
 
-- Armor slot filters only match armor items
-- Weapon group filters only match weapon items
-- Extra-slot subtype filters only match extra-slot items
-- If a category-specific filter array is active, other item kinds do not match that category section
+Rules:
 
-### Vocation Matching
+- Default sort is Name ascending.
+- Adding the first custom sort replaces the default Name sort.
+- Adding later sorts appends a lower-priority row.
+- Sort changes reset the page index.
+- The toolbar summarizes one sort by label and direction.
+- The toolbar summarizes multiple rows as `N sorts`.
 
-Rules implemented:
+## Sort Model
 
-- No selected vocation means unrestricted
-- Items containing `None` are treated as unrestricted and always pass vocation filtering
-- Otherwise, an item passes if any selected vocation matches the item’s vocation list
-
-### Level Matching
-
-Rules implemented:
-
-- `null` item level is treated as `0` for range comparison
-- Min and max are both optional
-
-### Numeric Threshold Matching
-
-Rules implemented:
-
-- `imbuementSlots` uses minimum comparison
-- `classification` uses exact comparison
-- `maxTier` uses minimum comparison
-- Bonus thresholds require item bonus value to be at least the selected threshold
-- Protection thresholds require item protection value to be at least the selected threshold
-
-### Drop Source Matching
-
-Rules implemented:
-
-- Input is comma-separated in the UI
-- Stored internally as string array
-- Every entered token must match at least one drop source by case-insensitive substring
-
-## Sort Model Spec
-
-Sort model file:
+Primary file:
 
 - `src/app/items/services/item-sort.service.ts`
 
-Implemented sort keys:
+Sort keys:
 
-- `name`
-- `level`
-- `weight`
-- `imbuementSlots`
-- `classification`
-- `maxTier`
-- `armor`
-- `attack`
-- `defense`
+- General: name, level, weight, imbuement slots, classification, max tier.
+- Combat: attack, armor, range, hit percent.
+- Elemental damage: Fire, Earth, Energy, Ice, Holy, Death.
+- Skill bonuses: Sword, Axe, Club, Distance, Shielding, MagicLevel, Fist.
+- Protections: Physical, Fire, Earth, Energy, Ice, Holy, Death.
 
-Sort direction:
+Sorting rules:
 
-- `asc`
-- `desc`
+- `ItemSortService.sortItems` accepts either a single sort or an ordered sort array.
+- Sort rows are applied in order.
+- If one row ties, comparison falls through to the next row.
+- Final tie-breaker is item name ascending.
+- Missing numeric values always sink to the bottom, regardless of direction.
+- Armor sort uses armor value for armor items, with shield defense as the armor fallback.
+- Weapon armor sort reads `weapon.defense`.
+- Weapon attack, range, and hit percent only apply to weapon items.
+- Elemental damage sort only applies to weapon items.
+- Skill bonus and protection sorts apply to all item kinds.
 
-Default sort:
+## Item Card Grid
 
-- `{ key: 'name', direction: 'asc' }`
+Primary files:
 
-## Sorting Behavior
+- `src/app/items/components/item-card-grid/item-card-grid.component.*`
+- `src/app/items/components/item-card/item-card.component.*`
+- `src/app/items/components/item-card/item-card-rank.ts`
 
-Sorting logic lives in `ItemSortService`.
+Responsibilities:
 
-Rules implemented:
+- Render paged items as cards.
+- Preserve compact layout and responsive wrapping.
+- Render loading, error, and empty states.
+- Delegate card hierarchy to the ranking helper.
 
-- `name` uses `localeCompare`
-- Numeric sorts handle `null` values explicitly
-- `null` numeric values sort last
-- Ties fall back to item name sorting
+Rules:
 
-Kind-specific numeric rules:
+- Cards use CSS grid, not table layout.
+- Card width should remain stable across hover and dynamic content.
+- Image assets render when available.
+- Missing images fall back to a generic icon.
 
-- `armor` reads `item.armor.arm` only for armor items
-- `attack` reads `item.weapon.attack` only for weapon items
-- `defense` reads weapon defense for weapon items and armor defense for armor items
+## Type-Aware Item Cards
 
-## Data Loading Spec
+The card ranking helper groups item facts into:
 
-Data service file:
+- Primary facts.
+- Secondary facts.
+- Meta facts.
+- Bonuses.
+- Protections.
 
-- `src/app/items/services/item-data.service.ts`
+Primary facts render as stat tiles with stronger emphasis. Secondary and meta facts render as compact icon chips. Bonuses and protections render in their own sections when present.
 
-Current data source:
+Armor rules:
 
-- `/assets/data/items.json`
+- Armor value is the top primary fact when available.
+- Shield defense is displayed as Armor, not Defense.
+- Defense should not appear as a user-facing card label.
+- Slot is secondary when armor exists and primary only when no stronger stat exists.
 
-Actual repository file:
+Weapon rules:
 
-- `public/assets/data/items.json`
+- Attack is primary when present.
+- Elemental damage facts are primary when present.
+- Weapon defense is displayed as Armor.
+- Hit percent is primary when present.
+- Range is primary when present.
+- Weapon group, hands, damage type, and ammo type are secondary.
+- Elemental damage values must not be misrepresented as skill bonuses.
 
-Implementation:
+Quiver rules:
 
-- Uses `HttpClient`
-- Returns `Observable<TibiaItem[]>`
-- Loaded on page init through the state service
+- Slot volume and accepted ammo types are primary.
+- Bonuses and protections remain visible when present.
 
-## Mock Data Included
+Extra-slot rules:
 
-The repository now contains local mock items to exercise the UI and filter logic.
+- Bonuses and top protection can become primary when they are the most useful facts.
+- Subtype is secondary and should not create an empty primary stat grid on its own.
 
-Current included sample categories:
+General card rules:
 
-- Armor
-- Weapon
-- Quiver
-- Extra-slot
+- Missing optional values are omitted.
+- Bonus and protection facts sort by value descending, then alphabetically.
+- Empty bonus/protection sections are not rendered.
+- External links render at the card bottom.
 
-Current included sample examples:
+## External Links
 
-- Demon Helmet
-- Magic Plate Armor
-- Falcon Greaves
-- Gnome Sword
-- Falcon Bow
-- Cobra Wand
-- Jungle Quiver
-- Lit Torch
-- Moon Mirror
-- Monk Bracers
+Primary file:
 
-This data is placeholder/static development data and not a complete production dataset.
+- `src/app/items/services/item-external-link.service.ts`
 
-## Accessibility Rules Applied
+Rules:
 
-Accessibility behavior currently included:
+- Each card includes bottom links for TibiaWiki and Tibia Fandom.
+- URLs are built from item names by replacing spaces with underscores and URI-encoding the slug.
+- Links open in a new tab with `noopener noreferrer`.
 
-- Icon buttons use `aria-label`
-- Filter close button uses `aria-label`
-- Material paginator remains keyboard accessible
-- Selected category state is not indicated by color alone; active entries also change surface and border treatment
-- Reusable controls use native Material form field semantics
+## Pagination
 
-## Responsive Behavior
+Rules:
 
-Responsive rules currently implemented:
+- Pagination derives from filtered and sorted items.
+- Page changes do not alter filters or sorts.
+- Filter and sort changes reset page index to `0`.
+- Desktop paginator appears in the toolbar.
 
-- Left category drawer is `side` mode on desktop
-- Left category drawer is `over` mode on small screens
-- Right filter drawer is always `over` mode
-- Toolbar paginator is desktop-only
-- Grid-level paginator is shown on smaller screens
-- Card grid increases columns across breakpoints
+## Public Site Metadata
 
-## Implementation Constraints Followed
+Primary files:
 
-The feature was built following these constraints:
+- `src/index.html`
+- `public/favicon.ico`
+- `public/favicon-32x32.png`
+- `public/apple-touch-icon.png`
+- `public/icon-192.png`
+- `public/icon-512.png`
+- `public/site.webmanifest`
+- `public/robots.txt`
+- `public/sitemap.xml`
 
-- No backend/API server
-- No MongoDB
-- No authentication
-- No admin editing flow
-- No server-side filtering
-- No global NgRx store
-- No data-table layout
-- No infinite scroll
+Rules:
 
-## Important Deviations and Clarifications
+- Browser title is `Edron Library`.
+- Canonical URL is `https://edronlibrary.com/`.
+- SEO description, robots tag, Open Graph, Twitter card, and JSON-LD metadata are present.
+- `robots.txt` allows crawling and points to the sitemap.
+- `sitemap.xml` lists the root URL.
+- Site icons use the generated bookshelf/library artwork.
 
-The implementation follows the requested feature closely, with these practical clarifications:
+## State Service
 
-- The filter drawer includes `Extra slot` rather than a separate `Quivers` filter section because quivers are already represented by item kind and sidebar category
-- `Classification` is implemented in the combined `Imbuements and class` section
-- `Armor slot`, `Weapon group`, and `Extra slot` are separate filter sections instead of one combined item type/category control, which keeps the UI denser and easier to scan
-- Mock images are currently empty strings, so cards fall back to a Material icon until real assets are added
+Primary file:
 
-## Verification Status
+- `src/app/items/services/item-browser-state.service.ts`
 
-Validation completed:
+State includes:
 
-- `npx tsc -p tsconfig.app.json --noEmit`
-- `npx ngc -p tsconfig.app.json --noEmit`
+- `allItems`
+- `filters`
+- `sorts`
+- `pageIndex`
+- `pageSize`
+- `loading`
+- `loadError`
 
-Result:
+Derived state includes:
 
-- TypeScript compile check passed
-- Angular template compilation passed
+- `filteredItems`
+- `sortedItems`
+- `totalCount`
+- `pagedItems`
+- `pageStart`
+- `pageEnd`
 
-Build/runtime limitation on this machine:
+Rules:
 
-- `npm run build` could not run because the local Node version is `v24.13.0`
-- Installed Angular CLI requires at least `v24.15.0` on the Node 24 line
-- `npm start` is blocked by the same Node version requirement
+- State is held with Angular signals.
+- Filtering is delegated to `ItemFilterService`.
+- Sorting is delegated to `ItemSortService`.
+- Components patch state through service methods rather than mutating arrays directly.
 
-## Recommended Next Steps
+## Testing Expectations
 
-The current implementation is appropriate for a first browser prototype. The next repository changes should likely be:
+Current focused test areas:
 
-1. Replace mock JSON with the real item dataset
-2. Add real sprite/image assets to `assets`
-3. Expand filter sections for any remaining domain-specific fields
-4. Add unit tests for `ItemFilterService` and `ItemSortService`
-5. Re-run full Angular build and local serve after upgrading Node
+- Item card ranking.
+- Item card rendering.
+- Item filtering.
+- Item sorting.
+- External link URL generation.
+- App shell creation.
+
+Expected verification commands:
+
+```bash
+cd apps/edron-library
+npm test -- --watch=false
+npm run build
+```
+
+The production build currently passes with a bundle budget warning.
+
+## Future Work
+
+Likely next improvements:
+
+- More data-quality regressions in the data capturer.
+- More filter and sort coverage for domain edge cases.
+- Richer item comparison flows.
+- Better empty-state and mobile drawer polish.
+- Production deployment through Cloudflare Pages.
