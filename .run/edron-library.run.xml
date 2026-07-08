@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="edron-library" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/apps/edron-library/package.json" />
+    <command value="run-script" />
+    <scripts>
+      <script value="start" />
+    </scripts>
+    <node-interpreter value="project" />
+    <envs />
+    <method v="2" />
+  </configuration>
+</component>

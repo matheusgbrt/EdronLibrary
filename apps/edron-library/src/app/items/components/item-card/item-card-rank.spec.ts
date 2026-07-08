@@ -118,6 +118,37 @@ describe('buildRankedItemCardModel', () => {
     expect(model.bonuses).toEqual([expect.objectContaining({ key: 'Axe', value: '+3 Axe' })]);
   });
 
+  it('shows wand and rod damage range as a primary weapon stat', () => {
+    const item = {
+      ...baseItem,
+      kind: 'weapon',
+      weapon: {
+        group: 'Wand',
+        hands: 'OneHanded',
+        attack: null,
+        defense: null,
+        defenseModifier: null,
+        range: 4,
+        hitPercent: null,
+        damageType: 'Fire',
+        damageRange: {
+          average: 19,
+          min: 13,
+          max: 25,
+          raw: '19 (13-25)'
+        },
+        consumesAmmo: false
+      }
+    } satisfies TibiaItem;
+
+    const model = buildRankedItemCardModel(item);
+
+    expect(model.primary).toEqual([
+      expect.objectContaining({ key: 'damageRange', label: 'Damage', value: '19 (13-25)', icon: 'local_fire_department' }),
+      expect.objectContaining({ key: 'range', label: 'Range', value: '4', icon: 'track_changes' })
+    ]);
+  });
+
   it('prioritizes quiver volume and ammo types', () => {
     const item = {
       ...baseItem,
