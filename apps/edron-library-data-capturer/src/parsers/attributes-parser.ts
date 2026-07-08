@@ -24,6 +24,14 @@ function collectValues(rawFields: Record<string, string>): string[] {
   return Object.values(rawFields);
 }
 
+function collectBonusValues(rawFields: Record<string, string>): string[] {
+  const bonusFieldPattern = /^(attrib|attributes?|bonus|bonuses|skillbonus|skill bonus|augments?)$/i;
+
+  return Object.entries(rawFields)
+    .filter(([key]) => bonusFieldPattern.test(key.trim()))
+    .map(([, value]) => value);
+}
+
 function parseSignedInteger(value: string): number | null {
   const match = value.match(/[+-]?\d+/);
   if (!match) {
@@ -63,7 +71,7 @@ export function parseProtections(
 export function parseBonuses(
   rawFields: Record<string, string>,
 ): Partial<Record<SkillBonus, number>> {
-  const joined = collectValues(rawFields).join('\n');
+  const joined = collectBonusValues(rawFields).join('\n');
   const bonuses: Partial<Record<SkillBonus, number>> = {};
 
   for (const skill of SKILLS) {

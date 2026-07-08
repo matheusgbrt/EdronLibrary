@@ -60,6 +60,34 @@ describe('buildRankedItemCardModel', () => {
     expect(model.secondary.map((fact) => fact.key)).toEqual(['weaponGroup', 'hands', 'damageType']);
   });
 
+  it('prioritizes elemental weapon damage when physical attack is absent', () => {
+    const item = {
+      ...baseItem,
+      kind: 'weapon',
+      bonuses: { Axe: 3 },
+      weapon: {
+        group: 'Axe',
+        hands: 'TwoHanded',
+        attack: null,
+        defense: 34,
+        defenseModifier: null,
+        range: null,
+        hitPercent: null,
+        damageType: 'Earth',
+        elementDamage: { Earth: 50 },
+        consumesAmmo: false
+      }
+    } satisfies TibiaItem;
+
+    const model = buildRankedItemCardModel(item);
+
+    expect(model.primary.map((fact) => fact.key)).toEqual(['elementDamage.Earth', 'defense']);
+    expect(model.primary[0]).toEqual(
+      expect.objectContaining({ label: 'Earth', value: '50', icon: 'terrain' })
+    );
+    expect(model.bonuses).toEqual([expect.objectContaining({ key: 'Axe', value: '+3 Axe' })]);
+  });
+
   it('prioritizes quiver volume and ammo types', () => {
     const item = {
       ...baseItem,
