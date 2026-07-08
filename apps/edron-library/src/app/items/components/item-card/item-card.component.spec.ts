@@ -76,4 +76,39 @@ describe('ItemCardComponent', () => {
     expect(element.querySelector('.bonus-chip')?.textContent).toContain('+3 Distance');
     expect(element.querySelector('.protection-chip')?.textContent).toContain('Physical 5%');
   });
+
+  it('does not render an empty primary stat grid for extra-slot items with only subtype metadata', async () => {
+    fixture.componentRef.setInput('item', {
+      id: 'amethyst-necklace',
+      name: 'Amethyst Necklace',
+      kind: 'extra-slot',
+      level: null,
+      vocations: ['None'],
+      weight: 4.3,
+      marketable: true,
+      imbuementSlots: 0,
+      classification: null,
+      maxTier: null,
+      bonuses: {},
+      protections: {},
+      specialEffects: [],
+      dropsFrom: { normal: [], boss: [], invasion: [], quest: [], other: [] },
+      sources: { primary: 'manual', urls: {}, confidence: 'high' },
+      assets: { imagePath: '' },
+      metadata: { tags: [], dataQuality: 'complete' },
+      extraSlot: {
+        subtype: 'Trinket',
+        providesLight: false,
+        consumable: false
+      }
+    } satisfies TibiaItem);
+
+    fixture.detectChanges();
+    await fixture.whenStable();
+    fixture.detectChanges();
+
+    const element: HTMLElement = fixture.nativeElement;
+    expect(element.querySelector('.primary-stat-grid')).toBeNull();
+    expect(element.querySelector('.secondary-chip')?.textContent).toContain('Trinket');
+  });
 });

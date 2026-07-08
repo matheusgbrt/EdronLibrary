@@ -135,6 +135,23 @@ describe('buildRankedItemCardModel', () => {
     expect(model.protections.map((fact) => fact.key)).toEqual(['Energy', 'Fire']);
   });
 
+  it('keeps extra-slot subtype out of the primary stat grid when it has no ranked values', () => {
+    const item = {
+      ...baseItem,
+      kind: 'extra-slot',
+      extraSlot: {
+        subtype: 'Trinket',
+        providesLight: false,
+        consumable: false
+      }
+    } satisfies TibiaItem;
+
+    const model = buildRankedItemCardModel(item);
+
+    expect(model.primary).toEqual([]);
+    expect(model.secondary).toEqual([expect.objectContaining({ key: 'subtype', value: 'Trinket' })]);
+  });
+
   it('shows shield defense value as armor without a separate defense fact', () => {
     const item = {
       ...baseItem,
