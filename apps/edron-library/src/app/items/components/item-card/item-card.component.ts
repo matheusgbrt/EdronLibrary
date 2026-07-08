@@ -3,6 +3,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 
 import { TibiaItem } from '../../models';
+import { ItemExternalLinkService, ItemExternalLinks } from '../../services/item-external-link.service';
 import { buildRankedItemCardModel, RankedItemCardModel, RankedItemFact } from './item-card-rank';
 
 interface DisplayItemFact extends RankedItemFact {
@@ -29,6 +30,7 @@ interface ItemCardDisplayModel {
 export class ItemCardComponent {
   readonly item = input.required<TibiaItem>();
   private readonly transloco = inject(TranslocoService);
+  private readonly externalLinkService = inject(ItemExternalLinkService);
   private readonly activeLang = this.transloco.activeLang;
 
   cardModel(item: TibiaItem): ItemCardDisplayModel {
@@ -44,6 +46,10 @@ export class ItemCardComponent {
 
   secondaryText(fact: DisplayItemFact): string {
     return fact.displayLabel === fact.key ? fact.displayValue : `${fact.displayLabel} ${fact.displayValue}`;
+  }
+
+  externalLinks(item: TibiaItem): ItemExternalLinks {
+    return this.externalLinkService.linksFor(item.name);
   }
 
   private toDisplayModel(model: RankedItemCardModel): ItemCardDisplayModel {

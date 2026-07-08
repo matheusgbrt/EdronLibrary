@@ -1,5 +1,6 @@
 @let currentItem = item();
 @let model = cardModel(currentItem);
+@let links = externalLinks(currentItem);
 
 <article class="item-card">
   <div class="flex gap-4">
@@ -83,4 +84,27 @@
       </div>
     </div>
   }
+
+  <div class="external-link-row">
+    <a
+      class="external-link"
+      [href]="links.tibiaWiki"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Open on TibiaWiki"
+      title="Open on TibiaWiki"
+    >
+      <mat-icon aria-hidden="true">menu_book</mat-icon>
+    </a>
+    <a
+      class="external-link"
+      [href]="links.tibiaFandom"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Open on Tibia Fandom"
+      title="Open on Tibia Fandom"
+    >
+      <mat-icon aria-hidden="true">public</mat-icon>
+    </a>
+  </div>
 </article>
