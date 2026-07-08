@@ -43,8 +43,8 @@ The template renders these groups consistently:
 Primary:
 
 - `Armor` when `armor.arm` is present.
-- `Defense` when `armor.def` is present.
-- `Slot` when no armor or defense value exists.
+- `Armor` using `armor.def` as a fallback for shields and spellbooks.
+- `Slot` when no armor value or defensive fallback exists.
 
 Secondary:
 
@@ -67,7 +67,9 @@ For helmets, armor is the first primary fact and should receive the strongest vi
 Primary:
 
 - `Attack` when present.
-- `Defense` when present.
+- Elemental damage when present.
+- `Armor` from `weapon.defense` when present.
+- `Hit` when hit percent is present.
 - `Range` when present and especially relevant for bows, crossbows, throwing weapons, and ammunition.
 
 Secondary:
@@ -75,7 +77,6 @@ Secondary:
 - Weapon group.
 - Hands.
 - Damage type.
-- Element damage when present.
 - Required ammo type when present.
 
 Meta:
@@ -109,13 +110,15 @@ Meta:
 
 Primary:
 
-- Extra-slot subtype.
+- Highest bonuses when present.
+- Highest protections when present and room remains in the primary grid.
 - `Attack` when present.
 
 Secondary:
 
-- Highest bonuses.
-- Highest protections.
+- Extra-slot subtype.
+- Remaining bonuses.
+- Remaining protections.
 - Special effects when present and representable in a compact chip.
 
 Meta:
@@ -159,7 +162,7 @@ interface ItemCardViewModel {
 }
 ```
 
-Labels should continue using Transloco translations. Values may come directly from structured item fields. Sorting for bonuses and protections should be descending by numeric value, with a stable alphabetical fallback for equal values.
+Labels are plain English display strings because the app is English-only. Values may come directly from structured item fields. Sorting for bonuses, protections, and elemental damage should be descending by numeric value, with a stable alphabetical fallback for equal values.
 
 ## Error Handling And Edge Cases
 
@@ -180,7 +183,8 @@ Labels should continue using Transloco translations. Values may come directly fr
 ## Acceptance Criteria
 
 - Helmet cards emphasize armor above level, weight, classification, and imbuement slots.
-- Weapon cards emphasize attack/range/defense according to available values.
+- Shields and weapon defensive values display as `Armor`, not as a user-facing `Defense` fact.
+- Weapon cards emphasize attack, elemental damage, armor, hit percent, and range according to available values.
 - Quiver and extra-slot cards have meaningful primary facts instead of generic flat chips.
 - Icons appear on ranked facts, bonuses, and protections.
 - The card grid remains compact and visually consistent with the existing dark interface.
