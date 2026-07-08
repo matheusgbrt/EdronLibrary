@@ -87,3 +87,41 @@ test('normalizeWeaponItem keeps wand damage type and damage range estimate', () 
     raw: '19 (13-25)',
   });
 });
+
+test('normalizeWeaponItem estimates rod average when damage range has only min and max', () => {
+  const category: CaptureCategory = {
+    key: 'rods',
+    kind: 'weapon',
+    weaponGroup: 'Rod',
+    wikiCategoryTitles: ['Category:Rods'],
+  };
+
+  const item = normalizeWeaponItem(
+    {
+      ...rawWeapon({
+        levelrequired: '42',
+        vocrequired: 'druids',
+        weight: '29.00',
+        imbueslots: '2',
+        upgradeclass: '1',
+        range: '3',
+        manacost: '13',
+        damagetype: 'Death',
+        damagerange: '56-74',
+      }),
+      title: 'Underworld Rod',
+      sourceUrl: 'https://tibia.fandom.com/wiki/Underworld_Rod',
+      revisionId: 1147580,
+    },
+    category,
+    importedAt,
+  );
+
+  assert.equal(item.weapon.damageType, 'Death');
+  assert.deepEqual(item.weapon.damageRange, {
+    average: 65,
+    min: 56,
+    max: 74,
+    raw: '56-74',
+  });
+});

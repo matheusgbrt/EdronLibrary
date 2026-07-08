@@ -77774,6 +77774,12 @@
         "range": 5,
         "hitPercent": null,
         "damageType": "Death",
+        "damageRange": {
+          "average": 110,
+          "min": 100,
+          "max": 120,
+          "raw": "100-120"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -77911,6 +77917,12 @@
         "range": 5,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 94,
+          "min": 86,
+          "max": 102,
+          "raw": "86-102"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -77971,6 +77983,12 @@
         "range": 4,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 95,
+          "min": 80,
+          "max": 110,
+          "raw": "80-110"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -78031,6 +78049,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 80,
+          "min": 65,
+          "max": 95,
+          "raw": "65-95"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -78097,6 +78121,12 @@
         "range": 4,
         "hitPercent": null,
         "damageType": "Fire",
+        "damageRange": {
+          "average": 95,
+          "min": 85,
+          "max": 105,
+          "raw": "85-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -78161,6 +78191,12 @@
         "range": null,
         "hitPercent": null,
         "damageType": "Fire",
+        "damageRange": {
+          "average": 114,
+          "min": 103,
+          "max": 125,
+          "raw": "103-125"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -78297,6 +78333,12 @@
         "range": 4,
         "hitPercent": null,
         "damageType": "Earth",
+        "damageRange": {
+          "average": 90,
+          "min": 80,
+          "max": 100,
+          "raw": "80-100"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -78361,6 +78403,12 @@
         "range": 4,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 99,
+          "min": 89,
+          "max": 109,
+          "raw": "89-109"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -78424,6 +78472,12 @@
         "range": null,
         "hitPercent": null,
         "damageType": "Death",
+        "damageRange": {
+          "average": 118,
+          "min": 103,
+          "max": 133,
+          "raw": "103-133"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -78489,6 +78543,12 @@
         "range": null,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 105,
+          "min": 90,
+          "max": 120,
+          "raw": "90-120"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -78549,6 +78609,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -78609,6 +78675,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -78669,6 +78741,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -78729,6 +78807,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -78789,6 +78873,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -78849,6 +78939,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -78913,6 +79009,12 @@
         "range": 5,
         "hitPercent": null,
         "damageType": "Death",
+        "damageRange": {
+          "average": 110,
+          "min": 100,
+          "max": 120,
+          "raw": "100-120"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -78976,6 +79078,12 @@
         "range": null,
         "hitPercent": null,
         "damageType": "Fire",
+        "damageRange": {
+          "average": 119,
+          "min": 113,
+          "max": 125,
+          "raw": "113-125"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -79035,6 +79143,12 @@
         "range": 4,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 65,
+          "min": 56,
+          "max": 74,
+          "raw": "56-74"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -79099,6 +79213,12 @@
         "range": 5,
         "hitPercent": null,
         "damageType": "Death",
+        "damageRange": {
+          "average": 110,
+          "min": 100,
+          "max": 120,
+          "raw": "100-120"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -79160,6 +79280,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 13,
+          "min": 8,
+          "max": 18,
+          "raw": "8-18"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -79283,6 +79409,12 @@
         "range": 6,
         "hitPercent": null,
         "damageType": "Death",
+        "damageRange": {
+          "average": 110,
+          "min": 100,
+          "max": 120,
+          "raw": "100-120"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -79406,6 +79538,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Fire",
+        "damageRange": {
+          "average": 6,
+          "min": 4,
+          "max": 8,
+          "raw": "4-8"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -79466,6 +79604,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -79526,6 +79670,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -79586,6 +79736,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -79646,6 +79802,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -79707,6 +79869,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -79769,6 +79937,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -79832,6 +80006,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -79999,6 +80179,12 @@
         "range": 4,
         "hitPercent": null,
         "damageType": "Death",
+        "damageRange": {
+          "average": 85,
+          "min": 75,
+          "max": 95,
+          "raw": "75-95"
+        },
         "consumesAmmo": false,
         "charges": 250
       }
@@ -80160,6 +80346,12 @@
         "range": 4,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 85,
+          "min": 75,
+          "max": 95,
+          "raw": "75-95"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -80349,6 +80541,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 53,
+          "min": 44,
+          "max": 62,
+          "raw": "44-62"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -80748,6 +80946,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -80809,6 +81013,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -80871,6 +81081,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -80934,6 +81150,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 102.5,
+          "min": 85,
+          "max": 120,
+          "raw": "85-120"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -80994,6 +81216,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -81055,6 +81283,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -81117,6 +81351,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -81180,6 +81420,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Energy",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -81573,6 +81819,12 @@
         "range": 5,
         "hitPercent": null,
         "damageType": "Earth",
+        "damageRange": {
+          "average": 90,
+          "min": 70,
+          "max": 110,
+          "raw": "70-110"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -81991,6 +82243,12 @@
         "range": 4,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 95,
+          "min": 85,
+          "max": 105,
+          "raw": "85-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -82129,6 +82387,12 @@
         "range": 5,
         "hitPercent": null,
         "damageType": "Earth",
+        "damageRange": {
+          "average": 94,
+          "min": 87,
+          "max": 101,
+          "raw": "87-101"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -82195,6 +82459,12 @@
         "range": 4,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 95,
+          "min": 85,
+          "max": 105,
+          "raw": "85-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -82272,6 +82542,12 @@
         "range": 4,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 85,
+          "min": 75,
+          "max": 95,
+          "raw": "75-95"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -82337,6 +82613,12 @@
         "range": null,
         "hitPercent": null,
         "damageType": "Earth",
+        "damageRange": {
+          "average": 112,
+          "min": 100,
+          "max": 124,
+          "raw": "100-124"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -82426,6 +82708,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 65,
+          "min": 56,
+          "max": 74,
+          "raw": "56-74"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -82554,6 +82842,12 @@
         "range": 4,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 90,
+          "min": 80,
+          "max": 100,
+          "raw": "80-100"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -82618,6 +82912,12 @@
         "range": 5,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 95,
+          "min": 85,
+          "max": 105,
+          "raw": "85-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -82697,6 +82997,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 19,
+          "min": 13,
+          "max": 25,
+          "raw": "13-25"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -82760,6 +83066,12 @@
         "range": null,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 115,
+          "min": 103,
+          "max": 127,
+          "raw": "103-127"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -82832,6 +83144,12 @@
         "range": 4,
         "hitPercent": null,
         "damageType": "Earth",
+        "damageRange": {
+          "average": 85,
+          "min": 75,
+          "max": 95,
+          "raw": "75-95"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -82897,6 +83215,12 @@
         "range": null,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 100,
+          "min": 90,
+          "max": 110,
+          "raw": "90-110"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -82985,6 +83309,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Death",
+        "damageRange": {
+          "average": 30,
+          "min": 23,
+          "max": 37,
+          "raw": "23-37"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -83060,6 +83390,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 30,
+          "min": 23,
+          "max": 37,
+          "raw": "23-37"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -83122,6 +83458,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Earth",
+        "damageRange": {
+          "average": 65,
+          "min": 56,
+          "max": 74,
+          "raw": "56-74"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -83182,6 +83524,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -83242,6 +83590,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -83302,6 +83656,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -83362,6 +83722,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -83422,6 +83788,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -83482,6 +83854,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -83606,6 +83984,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -83667,6 +84051,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -83729,6 +84119,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -83792,6 +84188,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -83852,6 +84254,12 @@
         "range": 4,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 95,
+          "min": 80,
+          "max": 110,
+          "raw": "80-110"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -83912,6 +84320,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -83973,6 +84387,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -84035,6 +84455,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -84098,6 +84524,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 102.5,
+          "min": 85,
+          "max": 120,
+          "raw": "85-120"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -84158,6 +84590,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -84219,6 +84657,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -84281,6 +84725,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -84344,6 +84794,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 87.5,
+          "min": 70,
+          "max": 105,
+          "raw": "70-105"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -84407,6 +84863,12 @@
         "range": null,
         "hitPercent": null,
         "damageType": "Earth",
+        "damageRange": {
+          "average": 112,
+          "min": 100,
+          "max": 124,
+          "raw": "100-124"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -84466,6 +84928,12 @@
         "range": 4,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 65,
+          "min": 56,
+          "max": 74,
+          "raw": "56-74"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -84605,6 +85073,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Earth",
+        "damageRange": {
+          "average": 13,
+          "min": 8,
+          "max": 18,
+          "raw": "8-18"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -84667,6 +85141,12 @@
         "range": 6,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 108,
+          "min": 98,
+          "max": 118,
+          "raw": "98-118"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -84766,6 +85246,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Earth",
+        "damageRange": {
+          "average": 65,
+          "min": 56,
+          "max": 74,
+          "raw": "56-74"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -84924,6 +85410,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Earth",
+        "damageRange": {
+          "average": 45,
+          "min": 37,
+          "max": 53,
+          "raw": "37-53"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -84983,6 +85475,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 6,
+          "min": 4,
+          "max": 8,
+          "raw": "4-8"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -85083,6 +85581,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Death",
+        "damageRange": {
+          "average": 65,
+          "min": 56,
+          "max": 74,
+          "raw": "56-74"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -85143,6 +85647,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -85203,6 +85713,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }
@@ -85263,6 +85779,12 @@
         "range": 3,
         "hitPercent": null,
         "damageType": "Ice",
+        "damageRange": {
+          "average": 5,
+          "min": 0,
+          "max": 10,
+          "raw": "0-10"
+        },
         "consumesAmmo": false,
         "charges": null
       }

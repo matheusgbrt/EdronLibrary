@@ -152,15 +152,28 @@ function parseDamageRange(value: string | undefined): WeaponItem['weapon']['dama
     return undefined;
   }
 
-  const match = raw.match(/^(\d+(?:\.\d+)?)\s*\(\s*(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)\s*\)$/);
-  if (!match?.[1] || !match[2] || !match[3]) {
+  const averageRangeMatch = raw.match(/^(\d+(?:\.\d+)?)\s*\(\s*(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)\s*\)$/);
+  if (averageRangeMatch?.[1] && averageRangeMatch[2] && averageRangeMatch[3]) {
+    return {
+      average: Number.parseFloat(averageRangeMatch[1]),
+      min: Number.parseFloat(averageRangeMatch[2]),
+      max: Number.parseFloat(averageRangeMatch[3]),
+      raw,
+    };
+  }
+
+  const minMaxMatch = raw.match(/^(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)$/);
+  if (!minMaxMatch?.[1] || !minMaxMatch[2]) {
     return undefined;
   }
 
+  const min = Number.parseFloat(minMaxMatch[1]);
+  const max = Number.parseFloat(minMaxMatch[2]);
+
   return {
-    average: Number.parseFloat(match[1]),
-    min: Number.parseFloat(match[2]),
-    max: Number.parseFloat(match[3]),
+    average: (min + max) / 2,
+    min,
+    max,
     raw,
   };
 }
