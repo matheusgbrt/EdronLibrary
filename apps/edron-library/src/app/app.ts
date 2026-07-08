@@ -1,7 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
-import { LanguageService } from './core/i18n/language.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +7,4 @@ import { LanguageService } from './core/i18n/language.service';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  private readonly languageService = inject(LanguageService);
-
-  constructor() {
-    this.languageService.init();
-  }
-}
+export class App {}

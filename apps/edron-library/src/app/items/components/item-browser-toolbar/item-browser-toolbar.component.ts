@@ -5,14 +5,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 
-import { LanguageSwitcherComponent } from '../../../core/i18n/language-switcher/language-switcher.component';
 import { ItemBrowserStateService } from '../../services/item-browser-state.service';
 import { ItemSort, ItemSortKey } from '../../services/item-sort.service';
 
 interface SortOption {
-  labelKey: string;
+  label: string;
   key: ItemSortKey;
   direction: ItemSort['direction'];
 }
@@ -21,14 +19,12 @@ interface SortOption {
   selector: 'app-item-browser-toolbar',
   standalone: true,
   imports: [
-    LanguageSwitcherComponent,
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
     MatPaginatorModule,
     MatToolbarModule,
-    MatTooltipModule,
-    TranslocoPipe
+    MatTooltipModule
   ],
   templateUrl: './item-browser-toolbar.component.html',
   styleUrl: './item-browser-toolbar.component.scss',
@@ -39,16 +35,14 @@ export class ItemBrowserToolbarComponent {
   readonly categoryClicked = output<void>();
 
   protected readonly state = inject(ItemBrowserStateService);
-  private readonly transloco = inject(TranslocoService);
-  private readonly activeLang = this.transloco.activeLang;
 
   protected readonly sortOptions: SortOption[] = [
-    { labelKey: 'sort.nameAsc', key: 'name', direction: 'asc' },
-    { labelKey: 'sort.nameDesc', key: 'name', direction: 'desc' },
-    { labelKey: 'sort.levelDesc', key: 'level', direction: 'desc' },
-    { labelKey: 'sort.weightAsc', key: 'weight', direction: 'asc' },
-    { labelKey: 'sort.attackDesc', key: 'attack', direction: 'desc' },
-    { labelKey: 'sort.armorDesc', key: 'armor', direction: 'desc' }
+    { label: 'Name A-Z', key: 'name', direction: 'asc' },
+    { label: 'Name Z-A', key: 'name', direction: 'desc' },
+    { label: 'Level descending', key: 'level', direction: 'desc' },
+    { label: 'Weight ascending', key: 'weight', direction: 'asc' },
+    { label: 'Highest attack', key: 'attack', direction: 'desc' },
+    { label: 'Highest armor', key: 'armor', direction: 'desc' }
   ];
 
   onPage(event: PageEvent): void {
@@ -60,14 +54,11 @@ export class ItemBrowserToolbarComponent {
   }
 
   activeSortLabel(): string {
-    const lang = this.activeLang();
     const sort = this.state.sort();
-    const labelKey = this.sortOptions.find(
+    const label = this.sortOptions.find(
       (option) => option.key === sort.key && option.direction === sort.direction
-    )?.labelKey;
+    )?.label;
 
-    return labelKey
-      ? this.transloco.translate(labelKey, {}, lang)
-      : this.transloco.translate('items.sort', {}, lang);
+    return label ?? 'Sort';
   }
 }

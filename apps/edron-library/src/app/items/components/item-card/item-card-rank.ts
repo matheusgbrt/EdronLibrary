@@ -4,7 +4,6 @@ export type RankedFactTone = 'primary' | 'secondary' | 'meta' | 'bonus' | 'prote
 
 export interface RankedItemFact {
   key: string;
-  labelKey: string | null;
   label: string | null;
   value: string;
   icon: string;
@@ -26,7 +25,7 @@ export function buildRankedItemCardModel(item: TibiaItem): RankedItemCardModel {
   let protections = buildProtectionFacts(item);
 
   if (item.kind === 'armor') {
-    pushNumber(primary, 'armor', 'itemCard.armor', defensiveArmorValue(item.armor.arm, item.armor.def), 'security', 'primary');
+    pushNumber(primary, 'armor', 'Armor', defensiveArmorValue(item.armor.arm, item.armor.def), 'security', 'primary');
 
     if (primary.length === 0) {
       primary.push(rawFact('slot', null, item.armor.slot, 'checkroom', 'primary'));
@@ -36,10 +35,10 @@ export function buildRankedItemCardModel(item: TibiaItem): RankedItemCardModel {
   }
 
   if (item.kind === 'weapon') {
-    pushNumber(primary, 'attack', 'itemCard.attack', item.weapon.attack, 'flash_on', 'primary');
+    pushNumber(primary, 'attack', 'Attack', item.weapon.attack, 'flash_on', 'primary');
     primary.push(...buildElementDamageFacts(item.weapon.elementDamage));
-    pushNumber(primary, 'armor', 'itemCard.armor', item.weapon.defense, 'security', 'primary');
-    pushNumber(primary, 'range', 'itemCard.range', item.weapon.range, 'track_changes', 'primary');
+    pushNumber(primary, 'armor', 'Armor', item.weapon.defense, 'security', 'primary');
+    pushNumber(primary, 'range', 'Range', item.weapon.range, 'track_changes', 'primary');
 
     secondary.push(rawFact('weaponGroup', null, item.weapon.group, 'category', 'secondary'));
     secondary.push(rawFact('hands', null, item.weapon.hands, 'pan_tool_alt', 'secondary'));
@@ -51,7 +50,7 @@ export function buildRankedItemCardModel(item: TibiaItem): RankedItemCardModel {
   }
 
   if (item.kind === 'quiver') {
-    primary.push(numberFact('slots', 'itemCard.slots', item.quiver.volume, 'inventory_2', 'primary'));
+    primary.push(numberFact('slots', 'Slots', item.quiver.volume, 'inventory_2', 'primary'));
 
     if (item.quiver.acceptedAmmoTypes.length > 0) {
       primary.push(rawFact('ammoTypes', null, item.quiver.acceptedAmmoTypes.join('/'), 'adjust', 'primary'));
@@ -68,7 +67,7 @@ export function buildRankedItemCardModel(item: TibiaItem): RankedItemCardModel {
     bonuses = removePromotedFacts(bonuses, promotedBonuses);
     protections = removePromotedFacts(protections, promotedProtections);
 
-    pushNumber(primary, 'attack', 'itemCard.attack', item.extraSlot.attack ?? null, 'flash_on', 'primary');
+    pushNumber(primary, 'attack', 'Attack', item.extraSlot.attack ?? null, 'flash_on', 'primary');
 
     secondary.push(rawFact('subtype', null, item.extraSlot.subtype, 'radio_button_checked', 'secondary'));
   }
@@ -92,13 +91,13 @@ function defensiveArmorValue(armor: number | null, defense: number | null): numb
 
 function buildMetaFacts(item: TibiaItem): RankedItemFact[] {
   const facts: RankedItemFact[] = [
-    rawFact('level', 'itemCard.level', item.level === null ? 'itemCard.unrestricted' : String(item.level), 'military_tech', 'meta'),
-    rawFact('weight', 'itemCard.weight', `${item.weight} oz`, 'scale', 'meta'),
-    numberFact('imbuementSlots', 'itemCard.imbuementSlots', item.imbuementSlots, 'auto_fix_high', 'meta')
+    rawFact('level', 'Level', item.level === null ? 'Unrestricted' : String(item.level), 'military_tech', 'meta'),
+    rawFact('weight', 'Weight', `${item.weight} oz`, 'scale', 'meta'),
+    numberFact('imbuementSlots', 'Imbuement slots', item.imbuementSlots, 'auto_fix_high', 'meta')
   ];
 
-  pushNumber(facts, 'classification', 'itemCard.classification', item.classification, 'workspace_premium', 'meta');
-  pushNumber(facts, 'maxTier', 'itemCard.maxTier', item.maxTier, 'upgrade', 'meta');
+  pushNumber(facts, 'classification', 'Classification', item.classification, 'workspace_premium', 'meta');
+  pushNumber(facts, 'maxTier', 'Max tier', item.maxTier, 'upgrade', 'meta');
 
   return facts;
 }
@@ -154,28 +153,28 @@ function sortedEntries(record: Partial<Record<string, number>>): Array<[string, 
 function pushNumber(
   facts: RankedItemFact[],
   key: string,
-  labelKey: string,
+  label: string,
   value: number | null,
   icon: string,
   tone: RankedFactTone
 ): void {
   if (value !== null) {
-    facts.push(numberFact(key, labelKey, value, icon, tone));
+    facts.push(numberFact(key, label, value, icon, tone));
   }
 }
 
-function numberFact(key: string, labelKey: string, value: number, icon: string, tone: RankedFactTone): RankedItemFact {
-  return rawFact(key, labelKey, String(value), icon, tone);
+function numberFact(key: string, label: string, value: number, icon: string, tone: RankedFactTone): RankedItemFact {
+  return rawFact(key, label, String(value), icon, tone);
 }
 
 function rawFact(
   key: string,
-  labelKey: string | null,
+  label: string | null,
   value: string,
   icon: string,
   tone: RankedFactTone
 ): RankedItemFact {
-  return { key, labelKey, label: labelKey === null ? key : null, value, icon, tone };
+  return { key, label: label ?? key, value, icon, tone };
 }
 
 function bonusIcon(key: string): string {

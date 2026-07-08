@@ -1,43 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TranslocoTestingModule } from '@jsverse/transloco';
 
 import { TibiaItem } from '../../models';
 import { ItemCardComponent } from './item-card.component';
-
-const translations = {
-  itemCard: {
-    attack: 'Attack',
-    armor: 'Armor',
-    bonuses: 'Bonuses',
-    classification: 'Classification',
-    imbuementSlots: 'Imbuement slots',
-    level: 'Level',
-    maxTier: 'Max tier',
-    protections: 'Protections',
-    range: 'Range',
-    slots: 'Slots',
-    unrestricted: 'Unrestricted',
-    vocations: 'Vocations',
-    weight: 'Weight'
-  }
-};
 
 describe('ItemCardComponent', () => {
   let fixture: ComponentFixture<ItemCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        ItemCardComponent,
-        TranslocoTestingModule.forRoot({
-          langs: { en: translations },
-          preloadLangs: true,
-          translocoConfig: {
-            availableLangs: ['en'],
-            defaultLang: 'en'
-          }
-        })
-      ]
+      imports: [ItemCardComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ItemCardComponent);
