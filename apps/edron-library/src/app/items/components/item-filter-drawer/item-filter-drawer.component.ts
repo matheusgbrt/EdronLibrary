@@ -18,15 +18,14 @@ import {
   WeaponGroup
 } from '../../models';
 import { ItemBrowserStateService } from '../../services/item-browser-state.service';
-import { ChipToggleFilterComponent } from '../chip-toggle-filter/chip-toggle-filter.component';
 import { FilterSectionComponent } from '../filter-section/filter-section.component';
+import { MultiSelectChipsFilterComponent } from '../multi-select-chips-filter/multi-select-chips-filter.component';
 import { NumberRangeFilterComponent } from '../number-range-filter/number-range-filter.component';
 
 @Component({
   selector: 'app-item-filter-drawer',
   standalone: true,
   imports: [
-    ChipToggleFilterComponent,
     FilterSectionComponent,
     FormsModule,
     MatButtonModule,
@@ -36,6 +35,7 @@ import { NumberRangeFilterComponent } from '../number-range-filter/number-range-
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    MultiSelectChipsFilterComponent,
     NumberRangeFilterComponent
   ],
   templateUrl: './item-filter-drawer.component.html',
@@ -64,6 +64,7 @@ export class ItemFilterDrawerComponent {
   protected readonly extraSlotSubtypes: ExtraSlotSubtype[] = ['Trinket', 'LightSource', 'Tool', 'Other'];
   protected readonly skills: SkillBonus[] = ['Sword', 'Axe', 'Club', 'Distance', 'Shielding', 'MagicLevel', 'Fist'];
   protected readonly elements: Element[] = ['Physical', 'Fire', 'Earth', 'Energy', 'Ice', 'Holy', 'Death'];
+  protected readonly damageElements: Element[] = ['Fire', 'Earth', 'Energy', 'Ice', 'Holy', 'Death'];
   protected readonly classifications = [1, 2, 3, 4];
 
   patchQuery(query: string): void {
@@ -119,12 +120,20 @@ export class ItemFilterDrawerComponent {
     this.state.setProtectionThreshold(element, this.parseValue(value));
   }
 
+  setElementalDamage(element: Element, value: unknown): void {
+    this.state.setElementalDamageThreshold(element, this.parseValue(value));
+  }
+
   bonusValue(skill: SkillBonus): number | null {
     return this.state.filters().bonuses[skill] ?? null;
   }
 
   protectionValue(element: Element): number | null {
     return this.state.filters().protections[element] ?? null;
+  }
+
+  elementalDamageValue(element: Element): number | null {
+    return this.state.filters().elementalDamages[element] ?? null;
   }
 
   dropSourceText(): string {

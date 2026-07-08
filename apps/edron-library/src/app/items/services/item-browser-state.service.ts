@@ -80,7 +80,8 @@ export class ItemBrowserStateService {
       ...filters,
       ...partial,
       bonuses: partial.bonuses ?? filters.bonuses,
-      protections: partial.protections ?? filters.protections
+      protections: partial.protections ?? filters.protections,
+      elementalDamages: partial.elementalDamages ?? filters.elementalDamages
     }));
     this.pageIndex.set(0);
   }
@@ -90,6 +91,7 @@ export class ItemBrowserStateService {
       ...DEFAULT_ITEM_FILTERS,
       bonuses: {},
       protections: {},
+      elementalDamages: {},
       dropsFrom: []
     });
     this.pageIndex.set(0);
@@ -124,6 +126,12 @@ export class ItemBrowserStateService {
 
   setProtectionThreshold(element: Element, value: number | null): void {
     this.patchFilters({ protections: this.withThreshold(this.filters().protections, element, value) });
+  }
+
+  setElementalDamageThreshold(element: Element, value: number | null): void {
+    this.patchFilters({
+      elementalDamages: this.withThreshold(this.filters().elementalDamages, element, value)
+    });
   }
 
   private toggleValue<T>(values: T[], value: T): T[] {

@@ -1,0 +1,29 @@
+<mat-form-field appearance="outline" subscriptSizing="dynamic" class="multi-select-field w-full">
+  <mat-label>{{ label() }}</mat-label>
+  <mat-chip-grid #chipGrid [attr.aria-label]="label()">
+    @for (option of selected(); track option) {
+      <mat-chip-row (removed)="removeOption(option)">
+        {{ option }}
+        <button matChipRemove type="button" [attr.aria-label]="'Remove ' + option">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-chip-row>
+    }
+  </mat-chip-grid>
+  <input
+    matInput
+    [placeholder]="selected().length > 0 ? '' : placeholder()"
+    [matChipInputFor]="chipGrid"
+    [matAutocomplete]="auto"
+    [ngModel]="query()"
+    (ngModelChange)="onQueryChange($event)"
+  />
+  <mat-icon matSuffix>expand_more</mat-icon>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onOptionSelected($event)">
+    @for (option of availableOptions(); track option) {
+      <mat-option [value]="option">{{ option }}</mat-option>
+    } @empty {
+      <mat-option disabled>No options</mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>
