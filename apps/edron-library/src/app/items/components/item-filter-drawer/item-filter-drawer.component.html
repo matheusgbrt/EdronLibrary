@@ -33,7 +33,8 @@
     </app-filter-section>
 
     <app-filter-section title="Item type">
-      <app-chip-toggle-filter
+      <app-multi-select-chips-filter
+        label="Item type"
         [options]="kinds"
         [selected]="state.filters().kinds"
         (selectionChanged)="patchKinds($event)"
@@ -41,7 +42,8 @@
     </app-filter-section>
 
     <app-filter-section title="Vocation">
-      <app-chip-toggle-filter
+      <app-multi-select-chips-filter
+        label="Vocation"
         [options]="vocations"
         [selected]="state.filters().vocations"
         (selectionChanged)="patchVocations($event)"
@@ -59,7 +61,8 @@
     </app-filter-section>
 
     <app-filter-section title="Armor slot">
-      <app-chip-toggle-filter
+      <app-multi-select-chips-filter
+        label="Armor slot"
         [options]="armorSlots"
         [selected]="state.filters().armorSlots"
         (selectionChanged)="patchArmorSlots($event)"
@@ -67,7 +70,8 @@
     </app-filter-section>
 
     <app-filter-section title="Weapon group">
-      <app-chip-toggle-filter
+      <app-multi-select-chips-filter
+        label="Weapon group"
         [options]="weaponGroups"
         [selected]="state.filters().weaponGroups"
         (selectionChanged)="patchWeaponGroups($event)"
@@ -75,7 +79,8 @@
     </app-filter-section>
 
     <app-filter-section title="Extra slot type">
-      <app-chip-toggle-filter
+      <app-multi-select-chips-filter
+        label="Extra slot type"
         [options]="extraSlotSubtypes"
         [selected]="state.filters().extraSlotSubtypes"
         (selectionChanged)="patchExtraSlotSubtypes($event)"
@@ -92,6 +97,22 @@
               type="number"
               [ngModel]="bonusValue(skill)"
               (ngModelChange)="setBonus(skill, $event)"
+            />
+          </mat-form-field>
+        }
+      </div>
+    </app-filter-section>
+
+    <app-filter-section title="Elemental damage">
+      <div class="grid grid-cols-2 gap-3">
+        @for (element of damageElements; track element) {
+          <mat-form-field appearance="outline" subscriptSizing="dynamic">
+            <mat-label>{{ element }} damage</mat-label>
+            <input
+              matInput
+              type="number"
+              [ngModel]="elementalDamageValue(element)"
+              (ngModelChange)="setElementalDamage(element, $event)"
             />
           </mat-form-field>
         }

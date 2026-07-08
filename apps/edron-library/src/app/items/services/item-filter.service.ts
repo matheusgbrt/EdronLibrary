@@ -27,6 +27,7 @@ export interface ItemFilters {
   minMaxTier: number | null;
   bonuses: Partial<Record<SkillBonus, number>>;
   protections: Partial<Record<Element, number>>;
+  elementalDamages: Partial<Record<Element, number>>;
   dropsFrom: string[];
 }
 
@@ -46,6 +47,7 @@ export const DEFAULT_ITEM_FILTERS: ItemFilters = {
   minMaxTier: null,
   bonuses: {},
   protections: {},
+  elementalDamages: {},
   dropsFrom: []
 };
 
@@ -68,6 +70,7 @@ export class ItemFilterService {
       this.matchesMinimum(item.maxTier, filters.minMaxTier) &&
       this.matchesThresholds(item.bonuses, filters.bonuses) &&
       this.matchesThresholds(item.protections, filters.protections) &&
+      this.matchesElementalDamage(item, filters.elementalDamages) &&
       this.matchesDrops(item, filters.dropsFrom)
     );
   }
@@ -157,6 +160,21 @@ export class ItemFilterService {
 
       return (values[key] ?? 0) >= minimum;
     });
+  }
+
+  private matchesElementalDamage(
+    item: TibiaItem,
+    thresholds: Partial<Record<Element, number>>
+  ): boolean {
+    if (Object.keys(thresholds).length === 0) {
+      return true;
+    }
+
+    if (item.kind !== 'weapon') {
+      return false;
+    }
+
+    return this.matchesThresholds(item.weapon.elementDamage ?? {}, thresholds);
   }
 
   private matchesDrops(item: TibiaItem, dropsFrom: string[]): boolean {
